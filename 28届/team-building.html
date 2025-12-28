@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>团队建设 - 天津大学国旗护卫队</title>
+    <title>训练时长统计 - 天津大学国旗护卫队</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -18,62 +18,195 @@
         .detail-title {
             font-size: 36px;
             margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .detail-subtitle {
             font-size: 18px;
             opacity: 0.9;
             margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
         
         .detail-content {
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
+            line-height: 1.8;
+            color: #333;
         }
         
-        .activity-grid {
+        .detail-content h2 {
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        
+        .training-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 25px;
             margin: 40px 0;
         }
         
-        .activity-item {
+        .stat-item {
             background-color: white;
-            padding: 25px;
-            border-radius: 10px;
+            padding: 30px 25px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .activity-icon {
-            font-size: 28px;
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-icon {
+            font-size: 32px;
             color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .stat-item p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+        
+        .training-image-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .training-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
+            border: 1px solid #eee;
+        }
+        
+        .image-caption {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+            text-align: center;
+            margin-top: 8px;
         }
         
         .team-quote {
             background-color: #f8f9fa;
             border-left: 4px solid var(--primary-color);
-            padding: 20px;
-            margin: 30px 0;
+            padding: 25px;
+            margin: 40px 0;
             font-style: italic;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #444;
+            position: relative;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .team-quote:before {
+            content: '"';
+            font-size: 60px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            font-family: Georgia, serif;
+        }
+        
+        .detail-content ul,
+        .detail-content ol {
+            margin: 20px 0 25px 20px;
+            padding-left: 20px;
+        }
+        
+        .detail-content li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+            padding-left: 5px;
+        }
+        
+        .detail-content ul {
+            list-style-type: none;
+        }
+        
+        .detail-content ul li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .detail-content ol {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        
+        .detail-content ol li {
+            padding-left: 10px;
         }
         
         .back-link {
             display: inline-block;
-            margin: 30px 0 50px;
-            padding: 12px 24px;
+            margin: 40px 0 60px;
+            padding: 14px 30px;
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
             border-radius: 6px;
             font-size: 16px;
-            transition: background-color 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
         }
         
         .back-link:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
         }
         
         @media (max-width: 768px) {
@@ -81,8 +214,35 @@
                 font-size: 28px;
             }
             
-            .activity-grid {
+            .detail-subtitle {
+                font-size: 16px;
+            }
+            
+            .training-stats {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 25px 20px;
+            }
+            
+            .stat-value {
+                font-size: 32px;
+            }
+            
+            .detail-content {
+                line-height: 1.7;
+            }
+            
+            .team-quote {
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            .detail-content h2 {
+                font-size: 22px;
+                margin: 30px 0 15px;
             }
         }
     </style>
@@ -91,76 +251,103 @@
     <!-- 详情页头部 -->
     <header class="detail-header">
         <div class="container">
-            <h1 class="detail-title">团队建设</h1>
-            <p class="detail-subtitle">天津大学国旗护卫队2025-2026学年第一学期团队建设总结</p>
+            <h1 class="detail-title">28届预备队员训练时长报告</h1>
+            <p class="detail-subtitle">天津大学国旗护卫队2025-2026学年第一学期训练时长总结</p>
             <a href="index.html" class="back-link">返回训练总结主页</a>
         </div>
     </header>
 
     <!-- 详情内容 -->
     <main class="detail-content">
-        <h2>团队建设活动</h2>
-        <p>本学期，国旗护卫队注重团队建设，通过多种形式的活动增强队员之间的沟通与协作，建立信任与默契，为训练工作提供了强大的精神支持。</p>
+        <h2>训练基本情况</h2>
+        <p>本学期自第6教学周起，28届预备队员训练正式启动。训练以每周三次晚训、周末一次大训练为基础，并在单周周五额外安排晚训补训。至第15教学周结束，共进行了10周的系统训练。</p>
         
-        <div class="activity-grid">
-            <div class="activity-item">
-                <div class="activity-icon">
-                    <i class="fas fa-hands-helping"></i>
+        <div class="training-stats">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <h3>素质拓展活动</h3>
-                <p>11月2日开展的素质拓展活动，通过团队游戏和挑战任务，加强了队员之间的沟通与协作能力。</p>
+                <div class="stat-value">10 周</div>
+                <div class="stat-label">训练周期</div>
+                <p>第6教学周至第15教学周</p>
             </div>
             
-            <div class="activity-item">
-                <div class="activity-icon">
-                    <i class="fas fa-utensils"></i>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
-                <h3>团队聚餐交流</h3>
-                <p>定期组织团队聚餐，为队员提供轻松愉快的交流环境，增进彼此了解，培养团队感情。</p>
+                <div class="stat-value">3-4 次/周</div>
+                <div class="stat-label">训练频率</div>
+                <p>每周三次晚训+周末大训练</p>
             </div>
             
-            <div class="activity-item">
-                <div class="activity-icon">
-                    <i class="fas fa-comments"></i>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-user-friends"></i>
                 </div>
-                <h3>定期座谈会</h3>
-                <p>每月举行一次座谈会，队员们可以畅所欲言，分享训练心得，提出改进建议，增强团队凝聚力。</p>
+                <div class="stat-value">28 届</div>
+                <div class="stat-label">预备队员</div>
+                <p>全体预备队员参训</p>
             </div>
             
-            <div class="activity-item">
-                <div class="activity-icon">
+            <div class="stat-item">
+                <div class="stat-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
-                <h3>团队竞赛活动</h3>
-                <p>组织内部队列比赛和技能竞赛，激发队员的集体荣誉感和竞争意识，促进共同进步。</p>
+                <div class="stat-value">2 次</div>
+                <div class="stat-label">入队考核</div>
+                <p>全体队员顺利通过</p>
             </div>
         </div>
         
-        <div class="team-quote">
-            "一个人可以走得很快，但一群人可以走得更远。国旗护卫队不仅是一支队伍，更是一个大家庭，我们相互支持，共同成长。" — 队员张明
+        <h2>训练时长统计</h2>
+        <p>以下是28届预备队员本学期的训练时长统计情况：</p>
+        
+        <div class="training-image-container">
+            <img src="images\训练总结\2.png" alt="28届预备队员训练时长统计图表" class="training-image">
+            <p class="image-caption">图1：28届预备队员训练时长统计分布</p>
         </div>
         
-        <h2>团队建设成果</h2>
-        <p>通过一系列的团队建设活动，国旗护卫队取得了显著的团队建设成果：</p>
+        <p>根据统计数据显示，大部分队员的训练时长集中在24小时以上，训练效果显著。全体预备队员在武装部老师的指导下，在队长团、队委会和教练员的带训下，围绕夯实基础、锤炼作风、传承国护精神这一目标，系统开展了各项训练任务。</p>
+        
+        <div class="team-quote">
+            "从最初的军姿、停止间转法学习，到后续的调整队伍与成套队列动作训练，如今，各位28届预备队员已经顺利通过了两次入队考核。许多在训练初期看起来较为困难、甚至一度被认为难以完成的动作目标，也逐渐能够被大家稳定完成。" — 训练队委 于士博
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <h2>训练成果与进步</h2>
+        <p>通过本学期的系统训练，28届预备队员取得了显著进步：</p>
         
         <ul>
-            <li>队员之间的默契度大幅提升，训练中的配合更加流畅</li>
-            <li>形成了团结协作、互帮互助的良好氛围</li>
-            <li>团队凝聚力显著增强，队员们对队伍的归属感更加强烈</li>
-            <li>沟通渠道畅通，队员们能够及时反馈问题和建议</li>
-            <li>建立了深厚的战友情谊，为长期合作打下基础</li>
+            <li>完成了国旗护卫队基础动作的系统学习</li>
+            <li>队伍整体的精神面貌和整齐度较训练初期有了明显提升</li>
+            <li>队列训练与体能训练同步推进，基础力量、耐力和意志品质得到提升</li>
+            <li>为后续高强度训练和任务执行提供了必要支撑</li>
+            <li>锻炼了队员在困难条件下坚持训练、相互鼓励的团队精神</li>
         </ul>
         
-        <h2>未来团队建设计划</h2>
-        <p>下学期，国旗护卫队将继续加强团队建设，计划开展以下活动：</p>
+        <h2>存在的问题与改进方向</h2>
+        <p>在肯定成绩的同时，我们也清醒地看到训练中仍然存在的问题：</p>
         
         <ol>
-            <li>组织户外拓展训练，提升团队协作能力</li>
-            <li>开展爱国主义主题教育活动，增强思想建设</li>
-            <li>举办团队文艺活动，展示队员多方面才能</li>
-            <li>建立老队员带新队员的"传帮带"机制</li>
-            <li>定期组织团队建设经验交流会</li>
+            <li>队员个体身体素质和军事基础存在差异，训练效果在个体之间存在不均衡现象</li>
+            <li>部分队员对训练节奏适应较快，而部分队员仍需在动作熟练度、稳定性等方面投入更多时间与精力</li>
+            <li>队列纪律和队列条令仍需高度重视，个别队员存在消极参训、态度懒散等情况</li>
+            <li>个别队员多次未按要求提前请假，纪律意识有待加强</li>
         </ol>
+        
+        <h2>展望与期待</h2>
+        <p>从下学期开始，28届预备队员将逐步承担起日常升旗、大型升旗及校内外活动任务的主力职责。期待28届预备队员在后续训练中：</p>
+        
+        <ul>
+            <li>进一步强化纪律意识、标准意识和责任意识</li>
+            <li>不断打磨动作质量，提升整体作风</li>
+            <li>尽快成长为能够独当一面的国旗护卫队正式队员</li>
+            <li>为队伍持续注入新的力量，传承国护优良传统</li>
+        </ul>
+        
+        <p>相信在老师的指导下，在队长团、队委会和全体队员的共同努力下，天津大学国旗护卫队一定能够不断传承优良传统，展现更为昂扬的精神风貌。</p>
         
         <a href="index.html" class="back-link">返回训练总结主页</a>
     </main>
@@ -168,11 +355,129 @@
    <!-- 页脚 -->
     <footer class="page-footer">
         <div class="container">
-            <div class="footer-logo">天津大学国旗护卫队</div>
-            <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
-            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
-            <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
+            <!-- 校徽和校名标识 -->
+            <div class="footer-brand">
+                <div class="logos-container">
+                    <div class="logo-item">
+                        <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    </div>
+            
+                    <div class="logo-item">
+                        <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 队伍信息 -->
+            <div class="footer-org">
+                <div class="footer-logo">天津大学国旗护卫队</div>
+                <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+            </div>
+            
+            <!-- 版权信息 -->
+            <div class="footer-bottom">
+                <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+                <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
+            </div>
         </div>
     </footer>
+
+    <style>
+        .page-footer {
+            background: #f8f9fa;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo-img {
+            margin-bottom: 10px;
+        }
+
+        .university-logo {
+            width: 250px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .team-logo {
+            width: 200px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .logo-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .footer-org {
+            margin-bottom: 25px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .logos-container {
+                gap: 30px;
+            }
+            
+            .university-logo,
+            .team-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .logo-label {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logos-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
 </body>
 </html>

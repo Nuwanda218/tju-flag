@@ -329,12 +329,157 @@
 
    <!-- 页脚 -->
     <footer class="page-footer">
-        <div class="container">
+    <div class="container">
+        <!-- 校徽和校名标识 -->
+        <div class="footer-brand">
+            <div class="logos-container">
+                <div class="logo-item">
+                    <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    
+                </div>
+        
+                <div class="logo-item">
+                    <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- 队伍信息 -->
+        <div class="footer-org">
             <div class="footer-logo">天津大学国旗护卫队</div>
             <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+        </div>
+        
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
             <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
             <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
         </div>
-    </footer>
+    </div>
+</footer>
+
+<style>
+.page-footer {
+    background: #f8f9fa;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+/* 校徽和队徽容器 */
+.footer-brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* 两个logo之间的间距 */
+    flex-wrap: wrap; /* 小屏幕时自动换行 */
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 校徽和队徽样式 */
+.footer-logo-img {
+    margin-bottom: 10px;
+}
+
+/* 校徽 - 调整大小 */
+.university-logo {
+    width: 250px;  /* 调整校徽宽度 */
+    height: 100px; /* 调整校徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 队徽 - 调整大小 */
+.team-logo {
+    width: 200px;  /* 调整队徽宽度 */
+    height: 100px; /* 调整队徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 校名和队名标签 */
+.logo-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* 响应式设计 - 在小屏幕上调整 */
+@media (max-width: 768px) {
+    .logos-container {
+        gap: 30px; /* 缩小间距 */
+    }
+    
+    .university-logo,
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-label {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        flex-direction: column; /* 垂直排列 */
+        gap: 20px;
+    }
+}
+
+.footer-brand-text h3 {
+    margin: 0;
+    color: #333;
+    font-size: 22px;
+}
+
+.footer-brand-text p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer-org {
+    margin-bottom: 25px;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    color: #999;
+    font-size: 14px;
+}
+</style>
 </body>
 </html>

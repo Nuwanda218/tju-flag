@@ -644,133 +644,161 @@ body {
     }
 }
 
-/* ====== 对侧时间标记 ====== */
-.time-marker {
+/* ====== 圆形徽章时间卡片 ====== */
+.time-badge {
     position: absolute;
     top: 0;
-    width: 120px;
-    text-align: center;
-    padding: 8px 12px;
-    background-color: var(--white);
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-weight: 600;
-    color: var(--primary-dark);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.8);
     transition: var(--transition);
-    border: 2px solid var(--primary-light);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }
 
-.time-marker.visible {
+.time-badge.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
 }
 
-/* 左侧事件的对侧时间标记（在右侧） */
-.event-left .time-marker {
-    left: calc(100% + 60px);
-    transform: translateX(30px) translateY(20px);
+.time-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    z-index: -1;
 }
 
-.event-left .time-marker.visible {
-    transform: translateX(0) translateY(0);
+.time-badge::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0) 30%, 
+        rgba(255, 255, 255, 0) 70%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 50%;
+    z-index: -2;
 }
 
-/* 右侧事件的对侧时间标记（在左侧） */
-.event-right .time-marker {
-    right: calc(100% + 60px);
-    transform: translateX(-30px) translateY(20px);
+.time-badge .date-day {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.event-right .time-marker.visible {
-    transform: translateX(0) translateY(0);
+.time-badge .date-month {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
 }
 
-/* 关键事件的对侧时间标记 */
-.event-key .time-marker {
+/* 左侧事件的时间徽章 */
+.event-left .time-badge {
+    left: calc(100% + 40px);
+    transform: translateX(30px) scale(0.8);
+}
+
+.event-left .time-badge.visible {
+    transform: translateX(0) scale(1);
+}
+
+/* 右侧事件的时间徽章 */
+.event-right .time-badge {
+    right: calc(100% + 40px);
+    transform: translateX(-30px) scale(0.8);
+}
+
+.event-right .time-badge.visible {
+    transform: translateX(0) scale(1);
+}
+
+/* 关键事件的时间徽章 */
+.event-key .time-badge {
     left: 50%;
-    transform: translateX(-50%) translateY(-70px);
+    transform: translateX(-50%) translateY(-100px) scale(0.8);
     top: -80px;
 }
 
-.event-key .time-marker.visible {
-    transform: translateX(-50%) translateY(0);
+.event-key .time-badge.visible {
+    transform: translateX(-50%) translateY(-70px) scale(1);
 }
 
-/* 添加时间标记图标 */
-.time-marker::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 20px;
-    height: 2px;
-    background-color: var(--primary-color);
+.event-key .time-badge {
+    width: 100px;
+    height: 100px;
 }
 
-.event-left .time-marker::before {
-    left: -22px;
+.event-key .time-badge::before {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
 }
 
-.event-right .time-marker::before {
-    right: -22px;
+/* 连接线 */
+.time-badge::before {
+    transition: all 0.3s ease;
 }
 
-.event-key .time-marker::before {
-    content: "↓";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: none;
-    color: var(--primary-color);
-    font-size: 20px;
-    width: auto;
-    height: auto;
+.time-badge:hover::before {
+    transform: rotate(180deg);
 }
 
-/* 移动端调整 */
+/* 移动端适配 */
 @media (max-width: 992px) {
-    .time-marker {
+    .time-badge {
         position: relative;
         left: auto !important;
         right: auto !important;
         top: auto !important;
-        width: 120px;
-        margin: 0 auto 20px;
-        transform: translateY(20px) !important;
+        margin: -40px auto 30px !important;
+        transform: scale(0.8) !important;
     }
     
-    .time-marker.visible {
-        transform: translateY(0) !important;
+    .time-badge.visible {
+        transform: scale(1) !important;
     }
     
-    .event-left .time-marker::before,
-    .event-right .time-marker::before {
-        display: none;
+    .event-key .time-badge {
+        margin-top: -50px !important;
+        transform: translateX(-50%) scale(0.8) !important;
     }
     
-    .event-key .time-marker {
-        transform: translateX(-50%) translateY(20px) !important;
-        top: 0;
-        margin-top: -60px;
-    }
-    
-    .event-key .time-marker.visible {
-        transform: translateX(-50%) translateY(0) !important;
-    }
-    
-    .event-key .time-marker::before {
-        display: block;
+    .event-key .time-badge.visible {
+        transform: translateX(-50%) scale(1) !important;
     }
 }
 
-@media (max-width: 576px) {
-    .time-marker {
-        width: 100px;
-        padding: 6px 10px;
-        font-size: 14px;
+@media (max-width: 768px) {
+    .time-badge {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .time-badge .date-day {
+        font-size: 24px;
+    }
+    
+    .time-badge .date-month {
+        font-size: 12px;
     }
 }
 
