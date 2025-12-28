@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天津大学国旗护卫队25261学期训练总结</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        /* ====== 修复链接点击问题 ====== */
+
+/* 确保链接可点击且在最上层 */
+.view-more-link {
+    position: relative !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+}
+
+/* 防止事件内容中的伪元素覆盖链接 */
+.event-content::before {
+    pointer-events: none !important;
+}
+
+/* 确保链接区域不被覆盖 */
+.event-main {
+    position: relative;
+}
+
+.event-main > .view-more-link {
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* 移除可能影响点击的过渡效果 */
+.event-content:hover::before {
+    opacity: 0 !important; /* 防止伪元素在hover时覆盖 */
+}
+
+/* 确保图片和网格不覆盖链接 */
+.photo-grid,
+.event-image {
+    position: relative;
+    z-index: 1 !important;
+}
+
+/* ====== 测试区域样式 ====== */
+.debug-test {
+    background-color: #f8f9fa;
+    padding: 30px;
+    margin: 40px 0;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px dashed #b31942;
+}
+
+.debug-test h3 {
+    color: #b31942;
+    margin-bottom: 20px;
+}
+
+.test-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.test-link {
+    padding: 12px 24px;
+    background-color: #b31942;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.test-link:hover {
+    background-color: #8a0c2f;
+    transform: translateY(-3px);
+}
+
+.emergency-fix {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #ff9800;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+        /* 新增样式用于照片网格 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .photo-grid img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-grid img:hover {
+            transform: scale(1.03);
+        }
+        
+        .photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 6px;
+            color: #6c757d;
+            font-size: 14px;
+            height: 120px;
+        }
+        
+        .view-more-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .view-more-link:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .summary-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .summary-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">天津大学国旗护卫队25261学期训练总结</h1>
+            <div class="decorative-line"></div>
+            <p class="page-subtitle">2025—2026 学年第一学期 | 国旗飘扬 责任在肩</p>
+            
+            <div class="header-info">
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>2025.10 - 2025.12</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-users"></i>
+                    <span>天津大学国旗护卫队28届预备队员</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-flag"></i>
+                    <span>爱校护旗 奉献真心</span>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>向下滚动查看</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 时间轴主体 -->
+    <main class="timeline container">
+        <!-- 第一阶段 -->
+        <section class="phase">
+            <h2 class="phase-title center">启动与熟悉阶段</h2>
+
+            <div class="event event-left">
+                 <!-- 圆形徽章时间卡片 -->
+    <div class="time-badge">
+        <div class="date-day">8</div>
+        <div class="date-month">十月</div>
+    </div>
+    
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="far fa-handshake"></i>
+                        <span>10.8 见面会</span>
+                    </div>
+                    
+                    <div class="event-main">
+                        <img class="event-image" src="images/1008见面会/0.jpeg" alt="10月8日见面会">
+                        <p class="event-text">
+                            第28届国旗护卫队成员首次正式见面。通过见面会，队伍完成了从个体到集体的初步转变。队员们相互认识，建立团队意识，为后续训练打下坚实基础。
+                        </p>
+                        
+                        <!-- 照片网格 -->
+                        <div class="photo-grid">
+                            <img src="images/1008见面会/1.jpeg" alt="见面会照片1">
+                            <img src="images/1008见面会/2.jpeg" alt="见面会照片2">
+                            <img src="images/1008见面会/3.jpeg" alt="见面会照片3">
+                            <img src="images/1008见面会/4.jpeg" alt="见面会照片4">
+                            <!--
+                            <div class="photo-placeholder">+2 更多照片</div>
+                            <div class="photo-placeholder">+1 训练瞬间</div>
+                            -->
+                        </div>
+                        
+                        <!-- 查看详情链接 -->
+                        <a href="event-detail.html?id=meeting" class="view-more-link">查看详情与更多照片</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event event-right">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-moon"></i>
+                        <span>10.14–10.16 晚训</span>
+                    </div>
+                    <p class="event-text">
+                        训练正式进入常态化。通过连续两天的晚训，队员开始系统学习基础队列动作和规范要求，在反复练习中逐步适应训练节奏。晚间训练帮助队员们克服时间困难，培养纪律性，为后续训练打下基础。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1014-16晚训/0.jpeg" alt="1014-16晚训1">
+                        <img src="images/1014-16晚训/1.jpeg" alt="1014-16晚训2">
+                        <img src="images/1014-16晚训/2.jpeg" alt="1014-16晚训3">
+                        <img src="images/1014-16晚训/3.jpeg" alt="1014-16晚训4">
+                        <!--
+                        <div class="photo-placeholder">+3 训练照片</div>
+                        <div class="photo-placeholder">+1 队列训练</div>
+                        <div class="photo-placeholder">+1 动作指导</div>
+                        -->
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=night-training" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-left">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-users"></i>
+                        <span>10.18 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        首次集中大训练，对前期学习的动作进行整体检查与统一，队伍开始形成基本的动作框架和协同意识。通过集体合练，队员们相互观察、学习，初步形成整齐划一的动作标准。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1018大训练/0.jpeg" alt="1018大训练1">
+                        <img src="images/1018大训练/1.jpeg" alt="1018大训练2">
+                        <img src="images/1018大训练/2.jpeg" alt="1018大训练3">
+                        <img src="images/1018大训练/3.jpeg" alt="1018大训练4">
+                        <!--
+                        <div class="photo-placeholder">+2 集体合影</div>
+                        <div class="photo-placeholder">+1 训练特写</div>
+                        -->
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training1" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二阶段 -->
+        <section class="phase">
+            <h2 class="phase-title center">重复与打磨阶段</h2>
+
+            <div class="event event-right">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-redo"></i>
+                        <span>10.26 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        在前期训练基础上，对动作细节进行反复打磨，通过高强度重复训练，逐步减少个体差异，提升整体一致性。教官对每个动作进行精细化指导，队员们逐渐形成肌肉记忆。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1026大训练/0.jpeg" alt="1026大训练1">
+                        <img src="images/1026大训练/1.jpeg" alt="1026大训练2">
+                        <img src="images/1026大训练/2.jpeg" alt="1026大训练3">
+                        <img src="images/1026大训练/3.jpeg" alt="1026大训练4">
+                        <!--
+                        <div class="photo-placeholder">+3 细节训练</div>
+                        <div class="photo-placeholder">+1 教官指导</div>
+                        <div class="photo-placeholder">+1 动作纠正</div>
+                        -->
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training2" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-left">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>11.2 素质拓展活动</span>
+                    </div>
+                    <p class="event-text">
+                        通过素质拓展活动，加强队员之间的沟通与协作，增强队伍凝聚力，在训练之外进一步建立信任与默契。活动中队员们展现出的团队精神为后续训练提供了强大的精神支持。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1102素质拓展活动/0.jpeg" alt="1102素质拓展活动1">
+                        <img src="images/1102素质拓展活动/1.jpeg" alt="1102素质拓展活动2">
+                        <img src="images/1102素质拓展活动/2.jpeg" alt="1102素质拓展活动3">
+                        <img src="images/1102素质拓展活动/3.jpeg" alt="1102素质拓展活动4">
+                        <!--
+                        <div class="photo-placeholder">+2 团队游戏</div>
+                        <div class="photo-placeholder">+1 活动合影</div>
+                        -->
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=team-building" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-right">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>11.9 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        训练进入相对稳定阶段，队伍动作完成度和整体节奏明显提升，成员逐渐形成对训练强度与要求的心理预期。队员们开始从被动接受训练转变为主动追求动作完美。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1109大训练/0.jpeg" alt="1109大训练1">
+                        <img src="images/1109大训练/1.jpeg" alt="1109大训练2">
+                        <img src="images/1109大训练/2.jpeg" alt="1109大训练3">
+                        <img src="images/1109大训练/3.jpeg" alt="1109大训练4">
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training3" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三阶段 -->
+        <section class="phase phase-key">
+            <h2 class="phase-title center">检验与调整阶段</h2>
+
+            <div class="event event-key">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>11.16 第一次考核</span>
+                    </div>
+                    <p class="event-text">
+                        开展第一次阶段性考核，对队员动作规范、整体配合和训练成果进行集中检验，考核结果为后续训练提供了明确的调整方向。通过考核发现的问题，为个性化训练方案的制定提供了依据。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1116第一次考核/0.jpeg" alt="1116第一次考核1">
+                        <img src="images/1116第一次考核/1.jpeg" alt="1116第一次考核2">
+                        <img src="images/1116第一次考核/2.jpeg" alt="1116第一次考核3">
+                        <img src="images/1116第一次考核/3.jpeg" alt="1116第一次考核4">
+                        <!--
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=70" alt="考核照片2">
+                        <div class="photo-placeholder">+2 考核现场</div>
+                        <div class="photo-placeholder">+1 评委打分</div>
+                        -->
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=first-exam" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四阶段 -->
+        <section class="phase">
+            <h2 class="phase-title center">巩固与收官阶段</h2>
+
+            <div class="event event-left">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-bullseye"></i>
+                        <span>11.23 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        围绕考核中暴露的问题进行针对性强化训练，进一步提升动作稳定性与执行力。针对薄弱环节进行重点突破，确保每位队员都能达到标准要求。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1123大训练/0.jpeg" alt="1123大训练1">
+                        <img src="images/1123大训练/1.jpeg" alt="1123大训练2">
+                        <img src="images/1123大训练/2.jpeg" alt="1123大训练3">
+                        <img src="images/1123大训练/3.jpeg" alt="1123大训练4">
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training4" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-right">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-cogs"></i>
+                        <span>11.30 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        持续巩固训练成果，在重复中追求细节一致，确保整体表现趋于成熟。通过反复磨合，队员之间的配合更加默契，整体动作更加流畅。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1130大训练/0.jpeg" alt="巩固训练1">
+                        <img src="images/1130大训练/1.jpeg" alt="巩固训练2">
+                        <img src="images/1130大训练/2.jpeg" alt="巩固训练3">
+                        <img src="images/1130大训练/3.jpeg" alt="巩固训练4" >
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training5" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-left">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-award"></i>
+                        <span>12.7 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        训练进入收官准备阶段，重点放在动作完整度与队伍整体气质的塑造。队员们开始注重仪容仪表和精神面貌，展现出国旗护卫队应有的风采。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1207大训练/0.jpeg" alt="收官训练1">
+                        <img src="images/1207大训练/1.jpeg" alt="收官训练2">
+                        <img src="images/1207大训练/2.jpeg" alt="收官训练3">
+                        <img src="images/1207大训练/3.jpeg" alt="收官训练4">
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training6" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-right">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-flag-checkered"></i>
+                        <span>12.14 大训练</span>
+                    </div>
+                    <p class="event-text">
+                        对最终考核内容进行集中演练，强化规范意识，为结训做好充分准备。这是学期训练的最后一次集中训练，队员们全力以赴，展现最佳状态。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1214大训练/0.jpeg" alt="最后训练1">
+                        <img src="images/1214大训练/1.jpeg" alt="最后训练2">
+                        <img src="images/1214大训练/2.jpeg" alt="最后训练3">
+                        <img src="images/1214大训练/3.jpeg" alt="最后训练4">
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=big-training7" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+
+            <div class="event event-key">
+                <div class="event-content">
+                    <div class="event-time">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>12.21 第二次动作考核与结训晚会</span>
+                    </div>
+                    <p class="event-text">
+                        完成第二次动作考核，对本学期训练成果进行最终检验，随后举行结训晚会，为本阶段训练画上阶段性句号。晚会中表彰优秀队员，总结训练经验，增强队伍凝聚力。
+                    </p>
+                    
+                    <!-- 照片网格 -->
+                    <div class="photo-grid">
+                        <img src="images/1221第二次动作考核与结训晚会/0.jpeg" alt="结训晚会1">
+                        <img src="images/1221第二次动作考核与结训晚会/1.jpeg" alt="结训晚会2">
+                        <img src="images/1221第二次动作考核与结训晚会/2.jpeg" alt="表彰仪式">
+                        <img src="images/1221第二次动作考核与结训晚会/3.jpeg" alt="合影">
+                    </div>
+                    
+                    <!-- 查看详情链接 -->
+                    <a href="event-detail.html?id=graduation" class="view-more-link">查看详情与更多照片</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 总结部分 -->
+    <section class="summary-section">
+        <div class="container">
+            <h2 class="summary-title">学期训练总结</h2>
+            <div class="summary-content">
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>训练成果</h3>
+                    <p>本学期共开展训练活动15次，包括8次大训练和7次晚训。全体队员通过系统训练，掌握了国旗护卫的基本动作和流程，队伍整体协调性显著提升。</p>
+                    <a href="achievement.html" class="summary-link">查看详细训练成果</a>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>团队建设</h3>
+                    <p>通过素质拓展活动和日常训练配合，队员之间的默契度大幅提升，形成了团结协作、互帮互助的良好氛围，团队凝聚力显著增强。</p>
+                    <a href="team-building.html" class="summary-link">查看团队建设详情</a>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>未来展望</h3>
+                    <p>下学期将继续深化训练内容，提高动作标准，准备校级重要活动的升旗任务。同时，加强思想建设，培养队员的爱国情怀和责任担当。</p>
+                    <a href="future.html" class="summary-link">查看未来规划</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- 页脚 -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-logo">天津大学国旗护卫队</div>
+            <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+            <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

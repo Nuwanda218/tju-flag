@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来展望 - 天津大学国旗护卫队</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 详情页通用样式 */
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .detail-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .detail-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .detail-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .plan-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .plan-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .plan-icon {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .milestone-list {
+            margin: 40px 0;
+        }
+        
+        .milestone-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .milestone-date {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 20px;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 30px 0 50px;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* 新增的发言稿部分样式 */
+        .speech-section {
+            margin: 50px 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .speech-title {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+        
+        .speech-image {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .speech-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .speech-image-caption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .speech-content {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .speech-content p {
+            margin-bottom: 18px;
+            text-indent: 2em;
+        }
+        
+        .speech-content .greeting {
+            text-indent: 0;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .speech-author {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 30px;
+            color: var(--primary-dark);
+        }
+        
+        .phase-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 25px 0 10px;
+            font-size: 18px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-title {
+                font-size: 28px;
+            }
+            
+            .plan-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .milestone-item {
+                flex-direction: column;
+            }
+            
+            .milestone-date {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .speech-section {
+                padding: 20px;
+            }
+            
+            .speech-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 详情页头部 -->
+    <header class="detail-header">
+        <div class="container">
+            <h1 class="detail-title">未来展望</h1>
+            <p class="detail-subtitle">天津大学国旗护卫队2025-2026学年第二学期发展规划</p>
+            <a href="index.html" class="back-link">返回训练总结主页</a>
+        </div>
+    </header>
+
+    <!-- 详情内容 -->
+    <main class="detail-content">
+        <h2>未来发展规划</h2>
+        <p>基于本学期的训练成果和经验总结，国旗护卫队制定了下一阶段的发展规划，旨在进一步提升队伍的整体水平和综合能力。</p>
+        
+        <div class="plan-container">
+            <div class="plan-item">
+                <div class="plan-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>深化训练内容</h3>
+                <p>在现有基础上，增加专项训练内容，提高动作标准和难度，确保队伍整体水平持续提升。</p>
+            </div>
+            
+            <div class="plan-item">
+                <div class="plan-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <h3>重大活动任务</h3>
+                <p>准备校级重要活动的升旗任务，包括开学典礼、毕业典礼、校庆等重大场合的国旗护卫工作。</p>
+            </div>
+            
+            <div class="plan-item">
+                <div class="plan-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>思想建设加强</h3>
+                <p>定期开展爱国主义教育活动，增强队员的国家意识和责任担当，培养爱国情怀。</p>
+            </div>
+            
+            <div class="plan-item">
+                <div class="plan-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>团队建设完善</h3>
+                <p>继续加强团队建设，完善内部管理机制，营造更加和谐、积极向上的团队氛围。</p>
+            </div>
+        </div>
+        
+        <!-- 训练队委发言稿部分 -->
+        <section class="speech-section">
+            <h2 class="speech-title">训练队委发言：未来训练目标与规划</h2>
+            
+            <!-- 发言图片 -->
+            <div class="speech-image">
+                <img src="images/未来展望/0.jpeg" alt="训练队委发言现场">
+                <p class="speech-image-caption">训练队委崔希在训练总结会上发言</p>
+            </div>
+            
+            <!-- 发言稿内容 -->
+            <div class="speech-content">
+                <p class="greeting">尊敬的武装部老师，26届队长团、27届队委会及教练员，还有28届全体预备队员：</p>
+                
+                <p>大家晚上好！恭喜大家顺利完成本学期的训练任务。经过为期10周的训练，大家从互不相识到彼此熟悉、成为战友，从动作参差不齐到逐渐严格要求自己、逐步达成各项动作标准。作为老校区的队委，虽然我目前还无法准确叫出每一位同学的名字，也没能经常跟进了解大家的训练进度，但每当隔一段时间看到你们动作上的点滴进步，嘴上虽依旧是严厉的要求与督促，心里却着实为你们的训练成果感到欣慰。</p>
+                
+                <p>接下来，由我为大家详细介绍后续各阶段的训练目标与核心要求，明确各阶段的重点任务与方向，助力全体成员稳步推进训练、达成目标。</p>
+                
+                <div class="phase-title">寒假自主训练阶段</div>
+                <p>这一阶段是衔接前期训练成果、为后续冬训打基础的关键时期，核心目标在于：维持现有体能水平与已掌握动作的规范性，通过科学规划的自主练习，避免长期停训导致的状态下滑，做到"停训不停练"；同时，着重强化自我保护意识与动作细节把控，尽量减少冬训期间因身体适应不良或动作生疏引发的受伤情况。具体而言，寒假期间队员需通过自主练习保持现有水平的稳定性，动作模块需覆盖已掌握的基础队列动作等核心内容，要求队员通过视频打卡等方式确保动作规范性不打折——例如端腿需达到8分钟不落地，需队员在假期开展恢复性训练与动作提升训练；体能维持模块重点围绕耐力、核心力量及肢体协调性开展针对性训练，如在规定配速范围内慢跑、进行平板支撑、开展动作分解发力练习等，避免因缺乏系统训练导致肌肉力量下降、身体柔韧性变差等问题。同时，本阶段需强化动作细节的精准练习，追求高质量完成，而非通过过量的、变形的练习堆砌来达成训练目的；需掌握动作练习中自我监测、风险规避的方法，尤其针对低温环境下的身体活动特性，重点规范热身与放松流程，最大限度减少因身体适应不良、动作熟练度下降引发的拉伤、扭伤等意外伤害，为后续集中冬训筑牢身体与技能基础。</p>
+                
+                <div class="phase-title">冬训阶段</div>
+                <p>这是提升能力、完成新老交替储备的核心阶段，具体目标有两点：一是针对28届预备队员，通过系统化、高强度的集中训练，不仅磨练意志，更是要大幅度提升整体动作的标准度与熟练度，实现从"会做"到"做好、做精"的跨越——具体体现在整体动作的统一性与规范性上，消除个体动作差异，同时启动分列式训练，重点练习口号、合齐鼓点、劈枪干脆利落。由于28届首次要求女队员练习56式枪支，训练强度较大，因此需要大家更为投入、更为刻苦才能胜任这些任务要求，我们也不会急于求成，将在保证质量的基础上稳步推进；二是启动特位选拔工作，根据队员的综合表现、技能特长与责任心，筛选出具备左右护、刀手、旗手这些特位潜力的队员重点培养，为顺利接过27届的担子、保障队伍核心职能延续做好人才储备。冬训阶段训练强度较大，这不仅是对队员们身体素质的极大考验，更是对每一位28届预备队员意志的磨练，希望大家能够圆满完成。</p>
+                
+                <div class="phase-title">2025-2026学年下学期日常训练阶段</div>
+                <p>这一阶段的核心目标是巩固提升、选拔冲刺：一是在冬训基础上，进一步巩固已掌握的动作技能，细化动作细节，提升队伍整体的整齐度与专业性，推动队员尽早达到正式入队标准；二是重点培养特位，加入升旗动作流程训练，逐步将大升旗、日常升旗的动作学习融入日常训练，预期在清明节前完成28届的第一次大升旗任务；三是围绕可能到来的各项赛事、展演等任务，开展针对性强化训练，全面考察队员的综合能力与临场表现，完成赛事队员的选拔与组队工作，为队伍争取优异成绩做好准备；四是逐步明确新老校区队员的分工及特位配置，围绕双校区的日常任务逐步开展针对性训练。</p>
+                
+                <p>以上就是各阶段训练目标的详细介绍。希望28届全体预备队员能够牢记目标、再接再厉，始终发扬国护"不怕苦、不怕累"的优良传统，不辜负过去的训练积累与队委、队长的殷切期望，"爱校护旗，奉献真心"。愿你们尽早、尽好地扛起国护的大旗，共同推动我们的国护队伍在传承中创新、在坚守中奋进，变得更加优秀！</p>
+                
+                <p class="speech-author">汇报人：崔希</p>
+            </div>
+        </section>
+        
+        <h2>下一学期重要里程碑</h2>
+        
+        <div class="milestone-list">
+            <div class="milestone-item">
+                <div class="milestone-date">2026年3月</div>
+                <div>
+                    <h3>新学期开训仪式</h3>
+                    <p>举行新学期开训仪式，明确训练目标和计划，激发队员训练热情。</p>
+                </div>
+            </div>
+            
+            <div class="milestone-item">
+                <div class="milestone-date">2026年4月</div>
+                <div>
+                    <h3>春季运动会升旗任务</h3>
+                    <p>承担学校春季运动会的开幕式升旗任务，展现国旗护卫队风采。</p>
+                </div>
+            </div>
+            
+            <div class="milestone-item">
+                <div class="milestone-date">2026年5月</div>
+                <div>
+                    <h3>爱国主义教育活动</h3>
+                    <p>组织参观爱国主义教育基地，开展主题教育活动，增强队员爱国情怀。</p>
+                </div>
+            </div>
+            
+            <div class="milestone-item">
+                <div class="milestone-date">2026年6月</div>
+                <div>
+                    <h3>毕业典礼升旗任务</h3>
+                    <p>承担毕业典礼升旗任务，为毕业生送上国旗护卫队的祝福。</p>
+                </div>
+            </div>
+            
+            <div class="milestone-item">
+                <div class="milestone-date">2026年7月</div>
+                <div>
+                    <h3>学期总结与表彰</h3>
+                    <p>进行学期训练总结，表彰优秀队员，规划暑期训练和下一学年工作。</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>长期发展目标</h2>
+        <p>天津大学国旗护卫队的长期发展目标是建设一支政治坚定、纪律严明、作风优良、技术过硬的国旗护卫队伍。具体目标包括：</p>
+        
+        <ul>
+            <li>打造天津高校国旗护卫队的标杆和典范</li>
+            <li>培养一批政治素质高、业务能力强的国旗护卫骨干</li>
+            <li>建立完善的训练体系和管理制度</li>
+            <li>积极参与校内外爱国主义教育活动</li>
+            <li>加强与兄弟院校国旗护卫队的交流与合作</li>
+        </ul>
+        
+        <p>我们相信，在全体队员的共同努力下，天津大学国旗护卫队一定能够不断进步，为守护国旗尊严、展现天大学子风采做出更大的贡献。</p>
+        
+        <a href="index.html" class="back-link">返回训练总结主页</a>
+    </main>
+
+   <!-- 页脚 -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-logo">天津大学国旗护卫队</div>
+            <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+            <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
+        </div>
+    </footer>
+</body>
+</html>
