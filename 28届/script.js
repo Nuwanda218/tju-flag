@@ -199,3 +199,4 @@ document.addEventListener('DOMContentLoaded', function() {
         return originalAddEventListener.call(this, type, listener, options);
     };
 })();
+

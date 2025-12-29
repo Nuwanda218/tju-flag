@@ -254,168 +254,70 @@
             opacity: 0;
         }
         
-        /* ====== 修复链接点击问题 ====== */
-        /* ... 保持原有的修复样式不变 ... */
-        /* ====== 测试区域样式 ====== */
-        /* ... 保持原有的测试样式不变 ... */
-        /* 新增样式用于照片网格 */
-        /* ... 保持原有的照片网格样式不变 ... */
-
-        /* ====== 修复链接点击问题 ====== */
-
-        /* 确保链接可点击且在最上层 */
-        .view-more-link {
-            position: relative !important;
-            z-index: 1000 !important;
-            pointer-events: auto !important;
-        }
-
-        /* 防止事件内容中的伪元素覆盖链接 */
-        .event-content::before {
-            pointer-events: none !important;
-        }
-
-        /* 确保链接区域不被覆盖 */
-        .event-main {
-            position: relative;
-        }
-
-        .event-main > .view-more-link {
-            display: inline-block !important;
-            position: relative !important;
-            z-index: 1000 !important;
-        }
-
-        /* 移除可能影响点击的过渡效果 */
-        .event-content:hover::before {
-            opacity: 0 !important; /* 防止伪元素在hover时覆盖 */
-        }
-
-        /* 确保图片和网格不覆盖链接 */
-        .photo-grid,
-        .event-image {
-            position: relative;
-            z-index: 1 !important;
-        }
-
-        /* ====== 测试区域样式 ====== */
-        .debug-test {
-            background-color: #f8f9fa;
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px dashed #b31942;
-        }
-
-        .debug-test h3 {
-            color: #b31942;
-            margin-bottom: 20px;
-        }
-
-        .test-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .test-link {
-            padding: 12px 24px;
-            background-color: #b31942;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .test-link:hover {
-            background-color: #8a0c2f;
-            transform: translateY(-3px);
-        }
-
-        .emergency-fix {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: #ff9800;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            font-weight: bold;
-        }
-        /* 新增样式用于照片网格 */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
         
-        .photo-grid img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid var(--light-gray);
-            transition: transform 0.3s ease;
-        }
-        
-        .photo-grid img:hover {
-            transform: scale(1.03);
-        }
-        
-        .photo-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f9fa;
-            border: 2px dashed #dee2e6;
-            border-radius: 6px;
-            color: #6c757d;
-            font-size: 14px;
-            height: 120px;
-        }
-        
-        .view-more-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 16px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .view-more-link:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .summary-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: transparent;
-            color: var(--primary-color);
-            text-decoration: none;
-            border: 2px solid var(--primary-color);
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .summary-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
+    
     </style>
 </head>
+<script>
+// 保存和恢复滚动位置的功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 保存滚动位置
+    function saveScrollPosition() {
+        sessionStorage.setItem('indexScrollPosition', window.pageYOffset);
+        console.log('保存滚动位置:', window.pageYOffset);
+    }
+    
+    // 恢复滚动位置
+    function restoreScrollPosition() {
+        const savedPosition = sessionStorage.getItem('indexScrollPosition');
+        const shouldRestore = sessionStorage.getItem('restoreScroll');
+        
+        if (shouldRestore === 'true' && savedPosition) {
+            console.log('正在恢复滚动位置:', savedPosition);
+            
+            // 等待页面完全渲染
+            setTimeout(() => {
+                window.scrollTo({
+                    top: parseInt(savedPosition, 10),
+                    behavior: 'instant'
+                });
+                
+                // 清除标识
+                sessionStorage.removeItem('restoreScroll');
+                sessionStorage.removeItem('indexScrollPosition');
+            }, 100);
+        }
+    }
+    
+    // 监听页面显示事件（处理浏览器后退）
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            restoreScrollPosition();
+        }
+    });
+    
+    // 监听页面加载完成
+    window.addEventListener('load', function() {
+        restoreScrollPosition();
+    });
+    
+    // 监听离开页面
+    window.addEventListener('beforeunload', function() {
+        saveScrollPosition();
+    });
+    
+    // 为所有离开页面的链接添加点击事件
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.includes('.html') && !href.startsWith('#')) {
+            link.addEventListener('click', function() {
+                sessionStorage.setItem('restoreScroll', 'true');
+                saveScrollPosition();
+            });
+        }
+    });
+});
+</script>
 <body class="splash-active">
     <!-- 开屏动画 -->
     <div class="splash-screen" id="splashScreen">
@@ -837,42 +739,274 @@
     </main>
 
     <!-- 总结部分 -->
-    <section class="summary-section">
-        <div class="container">
-            <h2 class="summary-title">学期训练总结</h2>
-            <div class="summary-content">
-                <div class="summary-item">
-                    <div class="summary-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>训练成果</h3>
-                    <p>本学期共开展训练活动15次，包括8次大训练和7次晚训。全体队员通过系统训练，掌握了国旗护卫的基本动作和流程，队伍整体协调性显著提升。</p>
-                    <a href="achievement.html" class="summary-link">查看详细训练成果</a>
+<section class="summary-section">
+    <div class="container">
+        <h2 class="summary-title">学期训练总结</h2>
+        <div class="summary-content">
+            <div class="summary-item">
+                <div class="summary-icon">
+                    <i class="fas fa-chart-line"></i>
                 </div>
-                
-                <div class="summary-item">
-                    <div class="summary-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>训练时长</h3>
-                    <p>通过素质拓展活动和日常训练配合，队员之间的默契度大幅提升，形成了团结协作、互帮互助的良好氛围，团队凝聚力显著增强。</p>
-                    <a href="team-building.html" class="summary-link">查看训练时长详情</a>
+                <h3>训练成果</h3>
+                <p>本学期共开展训练活动15次，包括8次大训练和7次晚训。全体队员通过系统训练，掌握了国旗护卫的基本动作和流程，队伍整体协调性显著提升。</p>
+                <a href="achievement.html" class="summary-link">查看详细训练成果</a>
+            </div>
+            
+            <div class="summary-item">
+                <div class="summary-icon">
+                    <i class="fas fa-clock"></i> <!-- 修改图标为时钟 -->
                 </div>
-                
-                <div class="summary-item">
-                    <div class="summary-icon">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                    <h3>未来展望</h3>
-                    <p>下学期将继续深化训练内容，提高动作标准，准备校级重要活动的升旗任务。同时，加强思想建设，培养队员的爱国情怀和责任担当。</p>
-                    <a href="future.html" class="summary-link">查看未来规划</a>
+                <h3>训练时长</h3>
+                <p>本学期总计训练时长约45小时，平均每次训练3小时。队员们克服学业压力，坚持准时参加训练，体现了高度的责任感和纪律性。</p> <!-- 修改描述 -->
+                <a href="team-building.html" class="summary-link">查看训练时长详情</a>
+            </div>
+            
+            <div class="summary-item">
+                <div class="summary-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <h3>未来展望</h3>
+                <p>下学期将继续深化训练内容，提高动作标准，准备校级重要活动的升旗任务。同时，加强思想建设，培养队员的爱国情怀和责任担当。</p>
+                <a href="future.html" class="summary-link">查看未来规划</a>
+            </div>
+            
+            <!-- 新增：队长和队委寄语卡片 -->
+            <div class="summary-item">
+                <div class="summary-icon">
+                    <i class="fas fa-comment-alt"></i> <!-- 修改为消息图标 -->
+                </div>
+                <h3>寄语与期望</h3>
+                <p>队长和队委对全体队员的付出表示肯定，并寄予殷切期望。希望大家继续发扬国护精神，守护国旗尊严，展现天大学子风采。</p>
+                <a href="leaders-message.html" class="summary-link">查看寄语</a>
+            </div>
+        </div>
+    </div>
+<!-- 学号查询入口 -->
+<section class="member-query-section">
+    <div class="container">
+        <h2 class="section-title">查看个人训练历程</h2>
+        <div class="query-form">
+            <input type="text" 
+                   id="studentIdInput" 
+                   placeholder="请输入您的学号（如：3025123456）"
+                   maxlength="10"
+                   pattern="[0-9]{10}"
+                   title="请输入10位数字学号">
+            <button id="queryButton" class="btn-primary">
+                <i class="fas fa-search"></i> 查看我的训练历程
+            </button>
+        </div>
+        <p class="query-hint">提示：请输入您的完整学号，系统将展示您的专属训练记录</p>
+    </div>
+</section>
+
+<style>
+/* 学号查询样式 - 优化版 */
+.member-query-section {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f0f2f5 100%);
+    padding: 60px 0;
+    margin: 0; /* 移除上下margin */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加上方的浅色装饰线 */
+.member-query-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(179, 25, 66, 0.1), transparent);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), #ff7b9c);
+    border-radius: 2px;
+}
+
+.query-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#studentIdInput {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+#studentIdInput:focus {
+    border-color: var(--primary-color);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(179, 25, 66, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #c2185b);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #c2185b, var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(179, 25, 66, 0.2);
+}
+
+.query-hint {
+    text-align: center;
+    color: #6c757d;
+    margin-top: 25px;
+    font-size: 14px;
+    padding: 0 20px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .member-query-section {
+        padding: 40px 0;
+    }
+    
+    .query-form {
+        flex-direction: column;
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    #studentIdInput {
+        min-width: 100%;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+
+<script>
+// 学号查询功能
+document.addEventListener('DOMContentLoaded', function() {
+    const studentIdInput = document.getElementById('studentIdInput');
+    const queryButton = document.getElementById('queryButton');
+    
+    queryButton.addEventListener('click', function() {
+        const studentId = studentIdInput.value.trim();
+        
+        if (!studentId) {
+            alert('请输入您的学号');
+            studentIdInput.focus();
+            return;
+        }
+        
+        if (!/^\d{10}$/.test(studentId)) {
+            alert('请输入正确的10位数字学号');
+            studentIdInput.select();
+            return;
+        }
+        
+        // 添加查询动画
+        queryButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 查询中...';
+        queryButton.disabled = true;
+        
+        // 模拟查询过程
+        setTimeout(() => {
+            // 跳转到个人页面，携带学号参数
+            window.location.href = `member.html?sid=${studentId}`;
+        }, 800);
+    });
+    
+    // 按回车键也可查询
+    studentIdInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            queryButton.click();
+        }
+    });
+    
+    // 输入框获得焦点时清空内容
+    studentIdInput.addEventListener('focus', function() {
+        this.select();
+    });
+});
+</script>
+
+<!-- 页脚 - 优化版 -->
+<footer class="page-footer">
+    <div class="container">
+        <!-- 校徽和队徽 -->
+        <div class="footer-brand">
+            <div class="logos-container">
+                <div class="logo-item">
+                    <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    <span class="logo-label">天津大学</span>
+                </div>
+                <div class="logo-item">
+                    <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    <span class="logo-label">国旗护卫队</span>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- 队伍宣言 -->
+        <div class="footer-motto">
+            <h3>天津大学国旗护卫队</h3>
+            <p class="motto-text">"爱校护旗，奉献真心" —— 守护国旗尊严，展现天大学子风采</p>
+        </div>
+        
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+                <p class="designer">设计：朱贵骋 | 技术支持：朱贵骋</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    
- <!-- 页脚 -->
+<style>
+    <!-- 页脚 -->
     <footer class="page-footer">
     <div class="container">
         <!-- 校徽和校名标识 -->
@@ -1034,51 +1168,76 @@
 
     <script src="script.js"></script>
     <script>
-        // 开屏动画控制脚本
-        document.addEventListener('DOMContentLoaded', function() {
-            const splashScreen = document.getElementById('splashScreen');
-            const flagBackground = document.getElementById('flagBackground');
-            const body = document.body;
+// 开屏动画控制脚本
+document.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.getElementById('splashScreen');
+    const flagBackground = document.getElementById('flagBackground');
+    const body = document.body;
+    
+    // 检查是否已经看过开屏动画
+    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+    
+    if (hasSeenSplash === 'true') {
+        // 如果已经看过，立即隐藏开屏动画
+        splashScreen.style.display = 'none';
+        body.classList.remove('splash-active');
+        
+        // 显示页面内容
+        const pageElements = document.querySelectorAll('.page-header, main, footer');
+        pageElements.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transition = 'opacity 0.5s ease';
+        });
+    } else {
+        // 第一次访问，显示开屏动画
+        // 设置开屏动画总时长
+        const splashDuration = 6500; // 6.5秒
+        
+        // 动画结束后移除开屏层并显示页面内容
+        setTimeout(function() {
+            splashScreen.style.display = 'none';
+            body.classList.remove('splash-active');
             
-            // 开屏动画总时长（包括延迟）
-            const splashDuration = 6500; // 6.5秒
-            
-            // 动画结束后移除开屏层并显示页面内容
-            setTimeout(function() {
-                splashScreen.style.display = 'none';
-                body.classList.remove('splash-active');
-                
-                // 显示页面内容
-                const pageElements = document.querySelectorAll('.page-header, main, footer');
-                pageElements.forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transition = 'opacity 0.5s ease';
-                });
-            }, splashDuration);
-            
-            // 如果用户点击屏幕，可以提前结束开屏动画
-            splashScreen.addEventListener('click', function() {
-                splashScreen.style.display = 'none';
-                body.classList.remove('splash-active');
-                
-                const pageElements = document.querySelectorAll('.page-header, main, footer');
-                pageElements.forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transition = 'opacity 0.5s ease';
-                });
+            // 显示页面内容
+            const pageElements = document.querySelectorAll('.page-header, main, footer');
+            pageElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transition = 'opacity 0.5s ease';
             });
             
-            // 图片加载失败时的后备方案
-            const tjuLogo = document.getElementById('tjuLogo');
-            const guardLogo = document.getElementById('guardLogo');
+            // 标记用户已经看过开屏动画
+            sessionStorage.setItem('hasSeenSplash', 'true');
+        }, splashDuration);
+        
+        // 如果用户点击屏幕，可以提前结束开屏动画
+        splashScreen.addEventListener('click', function() {
+            splashScreen.style.display = 'none';
+            body.classList.remove('splash-active');
             
-            // 为队旗背景设置备用样式，如果图片加载失败
+            const pageElements = document.querySelectorAll('.page-header, main, footer');
+            pageElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transition = 'opacity 0.5s ease';
+            });
+            
+            // 标记用户已经看过开屏动画
+            sessionStorage.setItem('hasSeenSplash', 'true');
+        });
+        
+        // 图片加载失败时的后备方案
+        const tjuLogo = document.getElementById('tjuLogo');
+        const guardLogo = document.getElementById('guardLogo');
+        
+        // 为队旗背景设置备用样式，如果图片加载失败
+        if (flagBackground) {
             flagBackground.addEventListener('error', function() {
                 console.log('队旗图片加载失败，使用纯色背景');
                 this.style.background = 'linear-gradient(180deg, rgba(179, 25, 66, 0.8) 0%, rgba(139, 12, 47, 0.6) 100%)';
                 this.style.backgroundSize = 'cover';
             });
-            
+        }
+        
+        if (tjuLogo) {
             tjuLogo.addEventListener('error', function() {
                 console.log('天津大学校徽图片加载失败，请检查路径');
                 // 创建替代元素
@@ -1087,7 +1246,9 @@
                 fallbackDiv.innerHTML = '<i class="fas fa-university" style="font-size: 40px; color: white;"></i>';
                 this.parentNode.replaceChild(fallbackDiv, this);
             });
-            
+        }
+        
+        if (guardLogo) {
             guardLogo.addEventListener('error', function() {
                 console.log('国旗护卫队队徽图片加载失败，请检查路径');
                 // 创建替代元素
@@ -1096,7 +1257,13 @@
                 fallbackDiv.innerHTML = '<i class="fas fa-flag" style="font-size: 40px; color: white;"></i>';
                 this.parentNode.replaceChild(fallbackDiv, this);
             });
-        });
-    </script>
+        }
+    }
+});
+
+// 页面跳转时清除标记（如果需要）
+// 如果用户点击链接离开首页，在返回时应该显示开屏动画，那么可以在链接点击时清除标记
+// 但根据需求，只需要第一次进入时显示，返回时不显示，所以不需要清除标记
+</script>
 </body>
 </html>
