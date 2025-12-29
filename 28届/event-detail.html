@@ -374,104 +374,7 @@
             font-weight: 700;
         }
         
-        /* 页脚 */
-        .page-footer {
-            background-color: #1a1a2e;
-            color: white;
-            padding: 50px 0 30px;
-            text-align: center;
-        }
         
-        .footer-logo {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        
-        .footer-text {
-            max-width: 700px;
-            margin: 0 auto 25px;
-            font-size: 17px;
-            line-height: 1.7;
-            opacity: 0.9;
-        }
-        
-        .footer-note {
-            margin-top: 20px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .detail-title {
-                font-size: 36px;
-            }
-            
-            .detail-main-image {
-                height: 400px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .gallery-item {
-                height: 200px;
-            }
-            
-            .detail-title {
-                font-size: 30px;
-            }
-            
-            .detail-main-image {
-                height: 300px;
-            }
-            
-            .detail-text {
-                padding: 25px;
-            }
-            
-            .event-navigation {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .event-nav-link {
-                max-width: 100%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-item {
-                height: 250px;
-            }
-            
-            .detail-title {
-                font-size: 26px;
-            }
-            
-            .detail-subtitle {
-                font-size: 18px;
-            }
-            
-            .event-meta {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -582,15 +485,162 @@
         </div>
     </div>
 
-    <!-- 页脚 -->
+  <!-- 页脚 -->
     <footer class="page-footer">
-        <div class="container">
-            <div class="footer-logo">天津大学国旗护卫队</div>
-            <p class="footer-text">国旗飘扬，责任在肩。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
-            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
-            <p class="footer-note">设计：写谁呢 | 技术支持：写谁呢</p>
+    <div class="container">
+        <!-- 校徽和校名标识 -->
+        <div class="footer-brand">
+            <div class="logos-container">
+                <div class="logo-item">
+                    <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    
+                </div>
+        
+                <div class="logo-item">
+                    <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    
+                </div>
+            </div>
         </div>
-    </footer>
+        
+        <!-- 队伍信息 -->
+        <div class="footer-org">
+            <div class="footer-logo">天津大学国旗护卫队</div>
+            <p class="footer-text">爱校护旗，奉献真心。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+        </div>
+        
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
+            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+            <p class="footer-note">设计：朱贵骋 | 技术支持：朱贵骋</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+.page-footer {
+    background: #f8f9fa;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+/* 校徽和队徽容器 */
+.footer-brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* 两个logo之间的间距 */
+    flex-wrap: wrap; /* 小屏幕时自动换行 */
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 校徽和队徽样式 */
+.footer-logo-img {
+    margin-bottom: 10px;
+}
+
+/* 校徽 - 调整大小 */
+.university-logo {
+    width: 250px;  /* 调整校徽宽度 */
+    height: 100px; /* 调整校徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 队徽 - 调整大小 */
+.team-logo {
+    width: 200px;  /* 调整队徽宽度 */
+    height: 100px; /* 调整队徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 校名和队名标签 */
+.logo-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* 响应式设计 - 在小屏幕上调整 */
+@media (max-width: 768px) {
+    .logos-container {
+        gap: 30px; /* 缩小间距 */
+    }
+    
+    .university-logo,
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-label {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        flex-direction: column; /* 垂直排列 */
+        gap: 20px;
+    }
+}
+
+.footer-brand-text h3 {
+    margin: 0;
+    color: #333;
+    font-size: 22px;
+}
+
+.footer-brand-text p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer-org {
+    margin-bottom: 25px;
+}
+
+.footer-logo {
+        font-size: 30px; /* 调整到您需要的大小 */
+        font-weight: 700; /* 700对应Bold，600对应Medium，400对应Regular */
+        color: #333;
+        margin-bottom: 10px;
+        font-family: 'Alibaba PuHuiTi', 'Microsoft YaHei', sans-serif;
+        letter-spacing: 1px; /* 可选：调整字间距 */
+    }
+
+.footer-text {
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    color: #999;
+    font-size: 14px;
+}
+</style>
 
     <script>
         // 完整的事件数据
@@ -608,15 +658,16 @@
                 
                 此外，会议还明确了训练纪律和考核标准，为后续的训练工作奠定了良好的基础。全体队员都表示将以饱满的热情和严谨的态度投入到训练中，为守护国旗尊严贡献力量。`,
                 images: [
-                    {url: 'images/1008见面会/1.jpeg', caption: '队长介绍国旗护卫队历史'},
+                    {url: 'images/1008见面会/1.jpeg', caption: '队员分组进行自我介绍'},
                     {url: 'images/1008见面会/2.jpeg', caption: '新队员自我介绍环节'},
                     {url: 'images/1008见面会/3.jpeg', caption: '分组交流活动'},
-                    {url: 'images/1008见面会/4.jpeg', caption: '全体队员合影留念'},
-                    {url: 'images/1008见面会/5.jpeg', caption: '训练计划讲解'},
-                    {url: 'images/1008见面会/6.jpeg', caption: '队员认真聆听要求'},
-                    {url: 'images/1008见面会/7.jpeg', caption: '团队建设活动'},
-                    {url: 'images/1008见面会/8.jpeg', caption: '队员庄严宣誓'},
-                    {url: 'images/1008见面会/9.jpeg', caption: '见面会结束合影'}
+                    {url: 'images/1008见面会/4.jpeg', caption: '队员认真聆听要求'},
+                    {url: 'images/1008见面会/5.jpeg', caption: '队员分组交流'},
+                    {url: 'images/1008见面会/6.jpeg', caption: '组内队员交流'},
+                    {url: 'images/1008见面会/7.jpeg', caption: '队员齐唱队歌'},
+                    {url: 'images/1008见面会/8.jpeg', caption: '小心翼翼倒可乐'},
+                    {url: 'images/1008见面会/9.jpeg', caption: '组员正在交流'},
+                    {url: 'images/1008见面会/10.jpeg', caption: '队员合影留念'}
                 ]
             },
             'night-training': {
@@ -628,19 +679,19 @@
                 mainImage: 'images/1014-16晚训/0.jpeg',
                 description: `训练正式进入常态化。通过连续多天的晚训，队员开始系统学习基础队列动作和规范要求，在反复练习中逐步适应训练节奏。晚间训练帮助队员们克服时间困难，培养纪律性，为后续训练打下基础。
                 
-                晚训内容包括：基本队列动作训练、步伐练习、转向训练等。教官对每个动作进行细致讲解和示范，队员们认真学习并反复练习。
+                晚训内容包括：基本队列动作训练、步伐练习、转向训练等。训练队委对每个动作进行细致讲解和示范，队员们认真学习并反复练习。
                 
-                通过连续三天的晚训，队员们初步掌握了国旗护卫的基本动作要领，为后续的大训练打下了坚实的基础。`,
+                通过连续三天的晚训，队员们初步掌握了国旗护卫的基本动作要领，为后续的训练打下了一定的基础。`,
                 images: [
-                    {url: 'images/1014-16晚训/1.jpeg', caption: '夜间队列训练'},
-                    {url: 'images/1014-16晚训/2.jpeg', caption: '教官示范标准动作'},
-                    {url: 'images/1014-16晚训/3.jpeg', caption: '队员分组练习'},
-                    {url: 'images/1014-16晚训/4.jpeg', caption: '纠正动作细节'},
-                    {url: 'images/1014-16晚训/5.jpeg', caption: '夜间体能训练'},
-                    {url: 'images/1014-16晚训/6.jpeg', caption: '整齐的队列'},
-                    {url: 'images/1014-16晚训/7.jpeg', caption: '分组讨论训练要点'},
-                    {url: 'images/1014-16晚训/8.jpeg', caption: '训练结束总结'},
-                    {url: 'images/1014-16晚训/9.jpeg', caption: '队员夜间休息'}
+                    {url: 'images/1014-16晚训/1.jpeg', caption: '军姿训练开始'},
+                    {url: 'images/1014-16晚训/2.jpeg', caption: '队伍左前方'},
+                    {url: 'images/1014-16晚训/3.jpeg', caption: '队伍右后方'},
+                    {url: 'images/1014-16晚训/4.jpeg', caption: '活动一下'},
+                    {url: 'images/1014-16晚训/5.jpeg', caption: '向左看齐'},
+                    {url: 'images/1014-16晚训/6.jpeg', caption: '看看自己最开始军姿站的样子'},
+                    {url: 'images/1014-16晚训/7.jpeg', caption: '动作纠正'},
+                    {url: 'images/1014-16晚训/8.jpeg', caption: '刚开始做深蹲俯卧撑'},
+                    {url: 'images/1014-16晚训/9.jpeg', caption: '下训总结'}
                 ]
             },
             'big-training1': {
@@ -652,18 +703,18 @@
                 mainImage: 'images/1018大训练/0.jpeg',
                 description: `首次集中大训练，对前期学习的动作进行整体检查与统一，队伍开始形成基本的动作框架和协同意识。通过集体合练，队员们相互观察、学习，初步形成整齐划一的动作标准。
                 
-                大训练中，教官对队员们的动作进行了逐一检查，纠正了不规范的动作，确保整个队伍的动作整齐划一。
+                大训练中，训练队委对队员们的动作进行了逐一检查，纠正了不规范的动作，确保整个队伍的动作整齐划一。
                 
                 通过这次大训练，队员们深刻体会到了团队协作的重要性，也为后续的训练积累了宝贵的经验。`,
                 images: [
-                    {url: 'images/1018大训练/1.jpeg', caption: '大训练全景'},
-                    {url: 'images/1018大训练/2.jpeg', caption: '整齐的方阵'},
-                    {url: 'images/1018大训练/3.jpeg', caption: '升旗动作训练'},
-                    {url: 'images/1018大训练/4.jpeg', caption: '正步走练习'},
-                    {url: 'images/1018大训练/5.jpeg', caption: '教官指导细节'},
-                    {url: 'images/1018大训练/6.jpeg', caption: '持枪动作训练'},
+                    {url: 'images/1018大训练/1.jpeg', caption: '摆臂训练'},
+                    {url: 'images/1018大训练/2.jpeg', caption: '军姿训练'},
+                    {url: 'images/1018大训练/3.jpeg', caption: '第一次站台阶军姿'},
+                    {url: 'images/1018大训练/4.jpeg', caption: '入队就是为了这面旗'},
+                    {url: 'images/1018大训练/5.jpeg', caption: '摆臂不要勾手腕'},
+                    {url: 'images/1018大训练/6.jpeg', caption: '队委正在进行动作讲解'},
                     {url: 'images/1018大训练/7.jpeg', caption: '集体合练'},
-                    {url: 'images/1018大训练/8.jpeg', caption: '训练成果展示'},
+                    {url: 'images/1018大训练/8.jpeg', caption: '27届和28届预备队员一起练'},
                     {url: 'images/1018大训练/9.jpeg', caption: '队员休息调整'}
                 ]
             },
@@ -674,19 +725,20 @@
                 location: '天津大学北洋园校区东门广场',
                 participants: '28届预备队员、带训队委及教练员',
                 mainImage: 'images/1026大训练/0.jpeg',
-                description: `在前期训练基础上，对动作细节进行反复打磨，通过高强度重复训练，逐步减少个体差异，提升整体一致性。教官对每个动作进行精细化指导，队员们逐渐形成肌肉记忆。
+                description: `武装部指导老师朱丙峰老师莅临现场指导训练
+                在前期训练基础上，对动作细节进行反复打磨，通过高强度重复训练，逐步减少个体差异，提升整体一致性。教官对每个动作进行精细化指导，队员们逐渐形成肌肉记忆。
                 
-                本次训练重点强化了正步走的节奏控制和手臂摆动幅度，确保整个方阵动作整齐划一。通过分组练习和集体合练相结合的方式，队员们相互学习，共同进步。`,
+                本次训练重点强化了齐步走的节奏控制和手臂摆动幅度，确保整个方阵动作整齐划一。通过分组练习和集体合练相结合的方式，队员们相互学习，共同进步。`,
                 images: [
-                    {url: 'images/1026大训练/1.jpeg', caption: '细节打磨训练'},
-                    {url: 'images/1026大训练/2.jpeg', caption: '教官一对一指导'},
-                    {url: 'images/1026大训练/3.jpeg', caption: '分组练习场景'},
-                    {url: 'images/1026大训练/4.jpeg', caption: '整齐的步伐'},
-                    {url: 'images/1026大训练/5.jpeg', caption: '动作纠正特写'},
-                    {url: 'images/1026大训练/6.jpeg', caption: '集体合练全景'},
-                    {url: 'images/1026大训练/7.jpeg', caption: '训练间隙交流'},
-                    {url: 'images/1026大训练/8.jpeg', caption: '训练成果展示'},
-                    {url: 'images/1026大训练/9.jpeg', caption: '队员调整状态'}
+                    {url: 'images/1026大训练/1.jpeg', caption: '为啥没帽子'},
+                    {url: 'images/1026大训练/2.jpeg', caption: '怎么闭着眼睛站军姿'},
+                    {url: 'images/1026大训练/3.jpeg', caption: '朱老师讲话'},
+                    {url: 'images/1026大训练/4.jpeg', caption: '俯卧撑'},
+                    {url: 'images/1026大训练/5.jpeg', caption: '你们之后为啥不这么做了'},
+                    {url: 'images/1026大训练/6.jpeg', caption: '纠正摆臂动作'},
+                    {url: 'images/1026大训练/7.jpeg', caption: '纠正摆臂'},
+                    {url: 'images/1026大训练/8.jpeg', caption: '台阶军姿的感觉不要忘'},
+                    {url: 'images/1026大训练/9.jpeg', caption: '刚开始走齐步'}
                 ]
             },
             'team-building': {
@@ -698,16 +750,16 @@
                 mainImage: 'images/1102素质拓展活动/0.jpeg',
                 description: `通过素质拓展活动，加强队员之间的沟通与协作，增强队伍凝聚力，在训练之外进一步建立信任与默契。活动中队员们展现出的团队精神为后续训练提供了强大的精神支持。
                 
-                活动包括团队破冰、信任背摔、团队协作游戏等多个环节。通过这些活动，队员们不仅放松了身心，更重要的是加深了彼此的了解，增强了团队的凝聚力。`,
+                活动包括团队破冰、穿越火线、团队协作游戏等多个环节。通过这些活动，队员们不仅放松了身心，更重要的是加深了彼此的了解，增强了团队的凝聚力。`,
                 images: [
-                    {url: 'images/1102素质拓展活动/1.jpeg', caption: '团队破冰活动'},
-                    {url: 'images/1102素质拓展活动/2.jpeg', caption: '信任背摔挑战'},
-                    {url: 'images/1102素质拓展活动/3.jpeg', caption: '团队协作游戏'},
-                    {url: 'images/1102素质拓展活动/4.jpeg', caption: '活动精彩瞬间'},
+                    {url: 'images/1102素质拓展活动/1.jpeg', caption: '后背交给队友的感觉'},
+                    {url: 'images/1102素质拓展活动/2.jpeg', caption: '听指令做动作'},
+                    {url: 'images/1102素质拓展活动/3.jpeg', caption: '你还记得对面的队友是谁吗'},
+                    {url: 'images/1102素质拓展活动/4.jpeg', caption: '团队讨论策略'},
                     {url: 'images/1102素质拓展活动/5.jpeg', caption: '队员欢乐时刻'},
-                    {url: 'images/1102素质拓展活动/6.jpeg', caption: '团队讨论策略'},
+                    {url: 'images/1102素质拓展活动/6.jpeg', caption: '团队协作游戏'},
                     {url: 'images/1102素质拓展活动/7.jpeg', caption: '活动总结分享'},
-                    {url: 'images/1102素质拓展活动/8.jpeg', caption: '全体合影留念'},
+                    {url: 'images/1102素质拓展活动/8.jpeg', caption: '笑得挺开心'},
                     {url: 'images/1102素质拓展活动/9.jpeg', caption: '队员放松交流'}
                 ]
             },
@@ -718,18 +770,18 @@
                 location: '天津大学北洋园校区东门广场',
                 participants: '28届预备队员、带训队委及教练员',
                 mainImage: 'images/1109大训练/0.jpeg',
-                description: `训练进入相对稳定阶段，队伍动作完成度和整体节奏明显提升，成员逐渐形成对训练强度与要求的心理预期。队员们开始从被动接受训练转变为主动追求动作完美。
+                description: `训练进入相对稳定阶段，队伍动作完成度和整体节奏明显提升，成员逐渐形成对训练强度与要求的心理预期。队员们开始从被动接受训练转变为主动追求动作完美。（希望你们真的是这样）
                 
-                本次训练重点加强了行进间的协调性和节奏感，通过音乐节拍辅助训练，使整个方阵的步伐更加整齐统一。队员们展现出良好的精神状态和训练热情。`,
+                本次训练重点加强了行进间的协调性和节奏感，通过音乐节拍辅助训练，使整个方阵的步伐更加整齐统一。队员们展现出良好的精神状态和训练热情（）。`,
                 images: [
-                    {url: 'images/1109大训练/1.jpeg', caption: '整齐的行进方阵'},
-                    {url: 'images/1109大训练/2.jpeg', caption: '节奏训练特写'},
-                    {url: 'images/1109大训练/3.jpeg', caption: '教官示范指导'},
-                    {url: 'images/1109大训练/4.jpeg', caption: '分组协调练习'},
+                    {url: 'images/1109大训练/1.jpeg', caption: '那天天气不错'},
+                    {url: 'images/1109大训练/2.jpeg', caption: '暗中密谋'},
+                    {url: 'images/1109大训练/3.jpeg', caption: '那时候齐步还是这样走的'},
+                    {url: 'images/1109大训练/4.jpeg', caption: '爱笑挺好的'},
                     {url: 'images/1109大训练/5.jpeg', caption: '整体合练场景'},
                     {url: 'images/1109大训练/6.jpeg', caption: '动作细节纠正'},
-                    {url: 'images/1109大训练/7.jpeg', caption: '训练间歇交流'},
-                    {url: 'images/1109大训练/8.jpeg', caption: '训练成果展示'},
+                    {url: 'images/1109大训练/7.jpeg', caption: '训练间歇休息'},
+                    {url: 'images/1109大训练/8.jpeg', caption: '准备对踢吗'},
                     {url: 'images/1109大训练/9.jpeg', caption: '队员调整状态'}
                 ]
             },
@@ -742,17 +794,17 @@
                 mainImage: 'images/1116第一次考核/0.jpeg',
                 description: `开展第一次阶段性考核，对队员动作规范、整体配合和训练成果进行集中检验，考核结果为后续训练提供了明确的调整方向。通过考核发现的问题，为个性化训练方案的制定提供了依据。
                 
-                考核内容包括单个军人队列动作、班排队列动作和升旗仪式流程三个部分。评委由教官和老队员组成，对每位队员的表现进行综合评价。`,
+                考核内容包括单个军人队列动作、班排队列动作两个部分。评委由队委和老队员组成，对每位队员的表现进行综合评价。`,
                 images: [
-                    {url: 'images/1116第一次考核/1.jpeg', caption: '考核入场仪式'},
-                    {url: 'images/1116第一次考核/2.jpeg', caption: '单个军人队列考核'},
-                    {url: 'images/1116第一次考核/3.jpeg', caption: '班排队列动作考核'},
-                    {url: 'images/1116第一次考核/4.jpeg', caption: '升旗流程考核'},
+                    {url: 'images/1116第一次考核/1.jpeg', caption: '军姿'},
+                    {url: 'images/1116第一次考核/2.jpeg', caption: '自己看吧，不写了'},
+                    {url: 'images/1116第一次考核/3.jpeg', caption: '太冷了活动一下'},
+                    {url: 'images/1116第一次考核/4.jpeg', caption: '应该是转体考核'},
                     {url: 'images/1116第一次考核/5.jpeg', caption: '评委认真评分'},
                     {url: 'images/1116第一次考核/6.jpeg', caption: '考核全景记录'},
-                    {url: 'images/1116第一次考核/7.jpeg', caption: '队员紧张待考'},
-                    {url: 'images/1116第一次考核/8.jpeg', caption: '考核结束总结'},
-                    {url: 'images/1116第一次考核/9.jpeg', caption: '考核合影留念'}
+                    {url: 'images/1116第一次考核/7.jpeg', caption: '老鹰捉小鸡'},
+                    {url: 'images/1116第一次考核/8.png', caption: '继续密谋'},
+                    {url: 'images/1116第一次考核/9.jpeg', caption: '活动游戏'}
                 ]
             },
             'big-training4': {
@@ -762,18 +814,19 @@
                 location: '天津大学北洋园校区东门广场',
                 participants: '28届预备队员、带训队委及教练员',
                 mainImage: 'images/1123大训练/0.jpeg',
-                description: `围绕考核中暴露的问题进行针对性强化训练，进一步提升动作稳定性与执行力。针对薄弱环节进行重点突破，确保每位队员都能达到标准要求。
+                description: `给第一次考核获奖队员颁奖
+                围绕考核中暴露的问题进行针对性强化训练，进一步提升动作稳定性与执行力。针对薄弱环节进行重点突破，确保每位队员都能达到标准要求。
                 
                 本次训练重点针对考核中发现的共性问题进行集中纠正，包括手臂摆动高度不一致、步幅大小不均等问题。通过分解动作练习和慢动作回放分析，帮助队员理解动作要领。`,
                 images: [
-                    {url: 'images/1123大训练/1.jpeg', caption: '针对性强化训练'},
-                    {url: 'images/1123大训练/2.jpeg', caption: '问题动作纠正'},
-                    {url: 'images/1123大训练/3.jpeg', caption: '分解动作练习'},
-                    {url: 'images/1123大训练/4.jpeg', caption: '分组指导训练'},
-                    {url: 'images/1123大训练/5.jpeg', caption: '慢动作分析'},
-                    {url: 'images/1123大训练/6.jpeg', caption: '集体合练场景'},
+                    {url: 'images/1123大训练/1.jpeg', caption: '训练标兵'},
+                    {url: 'images/1123大训练/2.jpeg', caption: '自己看吧'},
+                    {url: 'images/1123大训练/3.jpeg', caption: '你们商量分工合作是吗'},
+                    {url: 'images/1123大训练/4.jpeg', caption: '队长指导训练'},
+                    {url: 'images/1123大训练/5.jpeg', caption: '奖状'},
+                    {url: 'images/1123大训练/6.jpeg', caption: '摆臂不要勾手腕，手捏紧'},
                     {url: 'images/1123大训练/7.jpeg', caption: '训练成果检验'},
-                    {url: 'images/1123大训练/8.jpeg', caption: '训练总结讲评'},
+                    {url: 'images/1123大训练/8.jpeg', caption: '台阶军姿的感觉不要忘'},
                     {url: 'images/1123大训练/9.jpeg', caption: '队员调整状态'}
                 ]
             },
@@ -788,14 +841,14 @@
                 
                 本次训练重点强化行进间的协调配合，通过模拟正式升旗仪式的全流程演练，检验训练成果。队员们表现出色，动作整齐划一，展现出良好的训练成果。`,
                 images: [
-                    {url: 'images/1130大训练/1.jpeg', caption: '行进协调训练'},
-                    {url: 'images/1130大训练/2.jpeg', caption: '全流程演练'},
-                    {url: 'images/1130大训练/3.jpeg', caption: '默契配合训练'},
-                    {url: 'images/1130大训练/4.jpeg', caption: '动作细节打磨'},
-                    {url: 'images/1130大训练/5.jpeg', caption: '集体合练场景'},
-                    {url: 'images/1130大训练/6.jpeg', caption: '训练间歇交流'},
-                    {url: 'images/1130大训练/7.jpeg', caption: '成果展示时刻'},
-                    {url: 'images/1130大训练/8.jpeg', caption: '训练总结分享'},
+                    {url: 'images/1130大训练/1.jpeg', caption: '这张合影还会出现很多次'},
+                    {url: 'images/1130大训练/2.jpeg', caption: '枪支动作我已经不想说了'},
+                    {url: 'images/1130大训练/3.jpeg', caption: '第一次在灯柱下端腿'},
+                    {url: 'images/1130大训练/4.jpeg', caption: '严肃一点的合影'},
+                    {url: 'images/1130大训练/5.jpeg', caption: '还是枪支，自己看'},
+                    {url: 'images/1130大训练/6.jpeg', caption: '训练间歇休息'},
+                    {url: 'images/1130大训练/7.jpeg', caption: '刚开始走正步'},
+                    {url: 'images/1130大训练/8.jpeg', caption: '枪置地不是枪放下'},
                     {url: 'images/1130大训练/9.jpeg', caption: '队员状态调整'}
                 ]
             },
@@ -803,21 +856,21 @@
                 id: 'big-training6',
                 title: '12.7 大训练',
                 date: '2025年12月7日',
-                location: '天津大学主体育场',
-                participants: '36名队员',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
                 mainImage: 'images/1207大训练/0.jpeg',
                 description: `训练进入收官准备阶段，重点放在动作完整度与队伍整体气质的塑造。队员们开始注重仪容仪表和精神面貌，展现出国旗护卫队应有的风采。
                 
                 本次训练除了动作规范外，还特别强调了队员的精神状态和整体气质。通过仪容仪表检查、精神面貌训练等内容，全面提升队伍的综合素质。`,
                 images: [
-                    {url: 'images/1207大训练/1.jpeg', caption: '收官阶段训练'},
+                    {url: 'images/1207大训练/1.jpeg', caption: '蹬翘不会落'},
                     {url: 'images/1207大训练/2.jpeg', caption: '仪容仪表检查'},
-                    {url: 'images/1207大训练/3.jpeg', caption: '精神面貌训练'},
-                    {url: 'images/1207大训练/4.jpeg', caption: '整体气质塑造'},
+                    {url: 'images/1207大训练/3.jpeg', caption: '俯卧撑好啊，得做啊'},
+                    {url: 'images/1207大训练/4.jpeg', caption: '端感，也要记住这种抬腿的感觉'},
                     {url: 'images/1207大训练/5.jpeg', caption: '动作完整度训练'},
-                    {url: 'images/1207大训练/6.jpeg', caption: '集体合练场景'},
-                    {url: 'images/1207大训练/7.jpeg', caption: '训练成果展示'},
-                    {url: 'images/1207大训练/8.jpeg', caption: '收官训练合影'},
+                    {url: 'images/1207大训练/6.jpeg', caption: '纠正枪支动作'},
+                    {url: 'images/1207大训练/7.jpeg', caption: '“大佛”来了'},
+                    {url: 'images/1207大训练/8.jpeg', caption: '枪不要偏向脑袋，你们多找照片看看'},
                     {url: 'images/1207大训练/9.jpeg', caption: '队员状态调整'}
                 ]
             },
@@ -828,19 +881,19 @@
                 location: '天津大学北洋园校区图书馆地下车库',
                 participants: '28届预备队员、带训队委及教练员',
                 mainImage: 'images/1214大训练/0.jpeg',
-                description: `对最终考核内容进行集中演练，强化规范意识，为结训做好充分准备。这是学期训练的最后一次集中训练，队员们全力以赴，展现最佳状态。
+                description: `天气较冷，训练地点移至室内地下车库
+                对最终考核内容进行集中演练，强化规范意识，为结训做好充分准备。这是学期训练的最后一次集中训练，队员们全力以赴，展现最佳状态。
                 
                 本次训练模拟了最终考核的全过程，从入场、队列表演到退场，每个环节都按照考核标准进行。队员们表现出色，为学期的训练画上了圆满的句号。`,
                 images: [
                     {url: 'images/1214大训练/1.jpeg', caption: '最终考核演练'},
                     {url: 'images/1214大训练/2.jpeg', caption: '入场仪式训练'},
-                    {url: 'images/1214大训练/3.jpeg', caption: '队列表演练习'},
-                    {url: 'images/1214大训练/4.jpeg', caption: '退场动作训练'},
+                    {url: 'images/1214大训练/3.jpeg', caption: '休息调整'},
                     {url: 'images/1214大训练/5.jpeg', caption: '全流程合练'},
                     {url: 'images/1214大训练/6.jpeg', caption: '训练紧张进行'},
-                    {url: 'images/1214大训练/7.jpeg', caption: '最后训练时刻'},
-                    {url: 'images/1214大训练/8.jpeg', caption: '训练结束合影'},
-                    {url: 'images/1214大训练/9.jpeg', caption: '队员状态调整'}
+                    {url: 'images/1214大训练/7.jpeg', caption: '在给啥'},
+                    {url: 'images/1214大训练/8.jpeg', caption: '对踢得出腿感觉也要记住'},
+                    {url: 'images/1214大训练/9.jpeg', caption: '休息调整'}
 
                 ]
             },
@@ -848,22 +901,23 @@
                 id: 'graduation',
                 title: '12.21 第二次动作考核与结训晚会',
                 date: '2025年12月21日',
-                location: '天津大学大礼堂',
-                participants: '36名队员',
+                location: '天津大学北洋园校区',
+                participants: '武装部指导老师、28届预备队员、27届队委会、26届队长团',
                 mainImage: 'images/1221第二次动作考核与结训晚会/0.jpeg',
                 description: `完成第二次动作考核，对本学期训练成果进行最终检验，随后举行结训晚会，为本阶段训练画上阶段性句号。晚会中表彰优秀队员，总结训练经验，增强队伍凝聚力。
                 
-                考核中，队员们展现出卓越的训练成果，动作标准整齐，精神饱满。晚会上，队员们表演了精彩的节目，分享了训练心得，表彰了优秀队员，为学期的训练生活留下了美好的回忆。`,
+                晚会上，队员们表演了精彩的节目，分享了训练心得，表彰了优秀队员，为学期的训练生活留下了美好的回忆。
+                在这里我也补充一两句吧，制作这个网页是想让大家对本学期的训练有一个回顾，并不代表大家的动作已经符合要求了，也不代表训练已经结束了，28届预备队员还有很长一段路要走，非训练时间，我们可以轻松愉快，但是训练时，必须要严格要求自己，争取早日达到国旗护卫队的标准。希望大家继续努力，加油！`,
                 images: [
-                    {url: 'images/1221第二次动作考核与结训晚会/1.jpeg', caption: '第二次考核现场'},
-                    {url: 'images/1221第二次动作考核与结训晚会/2.jpeg', caption: '考核精彩瞬间'},
-                    {url: 'images/1221第二次动作考核与结训晚会/3.jpeg', caption: '结训晚会开场'},
-                    {url: 'images/1221第二次动作考核与结训晚会/4.jpeg', caption: '队员才艺表演'},
-                    {url: 'images/1221第二次动作考核与结训晚会/5.jpeg', caption: '优秀队员表彰'},
-                    {url: 'images/1221第二次动作考核与结训晚会/6.jpeg', caption: '训练经验分享'},
-                    {url: 'images/1221第二次动作考核与结训晚会/7.jpeg', caption: '晚会欢乐时刻'},
-                    {url: 'images/1221第二次动作考核与结训晚会/8.jpeg', caption: '全体大合影'},
-                    {url: 'images/1221第二次动作考核与结训晚会/9.jpeg', caption: '队员放松交流'}
+                    {url: 'images/1221第二次动作考核与结训晚会/1.jpeg', caption: '合唱情歌王'},
+                    {url: 'images/1221第二次动作考核与结训晚会/2.jpeg', caption: '给队员颁奖'},
+                    {url: 'images/1221第二次动作考核与结训晚会/3.jpeg', caption: '考核中'},
+                    {url: 'images/1221第二次动作考核与结训晚会/4.jpeg', caption: '别忘了那天的饺子'},
+                    {url: 'images/1221第二次动作考核与结训晚会/5.jpeg', caption: '谁想跳的'},
+                    {url: 'images/1221第二次动作考核与结训晚会/6.jpeg', caption: '不像演的'},
+                    {url: 'images/1221第二次动作考核与结训晚会/7.jpeg', caption: '梁老师点评过的歌曲'},
+                    {url: 'images/1221第二次动作考核与结训晚会/8.jpeg', caption: '不给别人递话筒'},
+                    {url: 'images/1221第二次动作考核与结训晚会/9.jpeg', caption: '本学期训练结束，之后的训练还将继续'}
                 ]
             }
         };
