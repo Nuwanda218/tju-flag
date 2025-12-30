@@ -10,12 +10,35 @@
     --border-color: #e0e0e0;
 }
 
+/* 返回按钮 */
+.member-top-bar {
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(-3px);
+}
+
 /* 成员信息卡片 */
 .member-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    padding: 40px 0;
-    margin-bottom: 40px;
+    padding: 30px 0;
+    margin-bottom: 30px;
 }
 
 .member-info-card {
@@ -25,9 +48,9 @@
     gap: 30px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .member-avatar {
@@ -35,22 +58,16 @@
 }
 
 .avatar-placeholder {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px;
-    border: 5px solid rgba(255,255,255,0.3);
+    font-size: 52px;
+    border: 4px solid rgba(255,255,255,0.3);
     overflow: hidden;
-}
-
-.avatar-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .member-details {
@@ -59,159 +76,174 @@
 }
 
 .member-details h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
+    margin-bottom: 12px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .member-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .meta-item {
-    padding: 8px 15px;
+    padding: 6px 12px;
     background: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
+    border-radius: 16px;
     font-size: 0.9rem;
 }
 
 .member-stats {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .stat-item {
     text-align: center;
+    min-width: 100px;
 }
 
 .stat-value {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     opacity: 0.9;
 }
 
-.member-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    min-width: 150px;
+/* 内容布局 */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.btn-back, .btn-print {
-    padding: 12px 20px;
-    border: 2px solid white;
-    border-radius: 10px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn-back:hover, .btn-print:hover {
-    background: white;
-    color: var(--primary-color);
-    transform: translateY(-2px);
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
 }
 
 /* 个人时间轴 */
 .member-timeline {
     background: white;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
 }
 
 .member-timeline h2 {
     color: var(--primary-color);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--light-gray);
 }
 
 .timeline-item {
     display: flex;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
 .timeline-date {
-    min-width: 120px;
-    padding: 10px 15px;
+    min-width: 100px;
+    padding: 8px 12px;
     background: var(--primary-color);
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: center;
-    margin-right: 20px;
+    margin-right: 15px;
+    font-size: 0.9rem;
     position: relative;
     z-index: 2;
+    flex-shrink: 0;
 }
 
 .timeline-date::after {
     content: '';
     position: absolute;
     top: 50%;
-    right: -10px;
+    right: -8px;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 10px solid var(--primary-color);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-left: 8px solid var(--primary-color);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
 }
 
 .timeline-content {
     flex: 1;
     background: var(--light-gray);
-    border-radius: 10px;
-    padding: 20px;
-    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 3px solid var(--primary-color);
 }
 
 .timeline-content h3 {
     margin-top: 0;
+    margin-bottom: 8px;
     color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* 照片网格 */
 .member-gallery {
     background: white;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.member-gallery h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--light-gray);
 }
 
 .gallery-controls {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
 .btn-filter {
-    padding: 8px 20px;
-    border: 2px solid var(--border-color);
+    padding: 6px 16px;
+    border: 1.5px solid var(--border-color);
     background: white;
-    border-radius: 20px;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s;
+    font-size: 0.9rem;
 }
 
 .btn-filter:hover, .btn-filter.active {
@@ -222,77 +254,156 @@
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.photo-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #f8f9fa;
 }
 
 .photo-grid img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+    transition: transform 0.3s;
+    display: block;
 }
 
-.photo-grid img:hover {
+.photo-item:hover img {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.photo-item:hover .photo-caption {
+    transform: translateY(0);
 }
 
 .no-photos {
     text-align: center;
-    padding: 60px 20px;
+    padding: 50px 20px;
     color: #888;
 }
 
 .no-photos i {
-    font-size: 60px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 16px;
     color: #ddd;
+}
+
+.no-photos p {
+    margin: 8px 0;
 }
 
 /* 成就区域 */
 .member-achievements {
     background: white;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.member-achievements h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--light-gray);
 }
 
 .achievements-list {
     display: grid;
-    gap: 15px;
+    gap: 12px;
 }
 
 .achievement-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 15px;
+    gap: 12px;
+    padding: 12px 16px;
     background: linear-gradient(to right, #f8f9fa, #fff);
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    transition: transform 0.2s;
+}
+
+.achievement-item:hover {
+    transform: translateX(4px);
+    background: linear-gradient(to right, #f0f2f5, #fff);
 }
 
 .achievement-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: var(--primary-color);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+}
+
+.achievement-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* 页脚 */
+.page-footer {
+    background: var(--secondary-color);
+    color: white;
+    padding: 25px 0;
+    margin-top: 40px;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 6px 0;
+    opacity: 0.9;
+}
+
+.member-id-display {
+    font-family: monospace;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
 }
 
 /* 响应式设计 */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .member-info-card {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
     }
     
     .member-meta {
@@ -301,48 +412,58 @@
     
     .member-stats {
         justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .photo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
     }
     
-    .photo-grid img {
-        height: 150px;
+    .stat-item {
+        min-width: 80px;
+    }
+    
+    .avatar-placeholder {
+        width: 110px;
+        height: 110px;
+        font-size: 44px;
+    }
+    
+    .member-details h1 {
+        font-size: 1.8rem;
+    }
+    
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 }
 
 @media (max-width: 480px) {
-    .member-details h1 {
-        font-size: 2rem;
+    .content-grid {
+        gap: 20px;
+    }
+    
+    .member-timeline,
+    .member-gallery,
+    .member-achievements {
+        padding: 20px;
     }
     
     .photo-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
-}
-
-/* 打印样式 */
-@media print {
-    .member-actions,
-    .gallery-controls,
-    .page-footer .member-id-display:last-child {
+    
+    .gallery-controls {
+        justify-content: center;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        align-self: flex-start;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-date::after {
         display: none;
-    }
-    
-    .member-header {
-        background: white !important;
-        color: black !important;
-    }
-    
-    .member-info-card {
-        box-shadow: none;
-        border: 2px solid #000;
-    }
-    
-    .photo-grid img {
-        break-inside: avoid;
     }
 }
