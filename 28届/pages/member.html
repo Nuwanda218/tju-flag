@@ -717,356 +717,262 @@
     <!-- 引入成员数据 -->
     <script src="../data/members.js"></script>
     
-    <!-- 引入成员数据 -->
-<script src="../data/members.js"></script>
-
-<script>
-    // GitHub媒体代理URL转换函数
-    function convertToGitHubMediaUrl(relativePath) {
-        const username = 'Nuwanda218';
-        const repo = 'TJUFlag';
-        const branch = 'main';
-        
-        // 移除开头的 ../
-        let cleanPath = relativePath;
-        if (cleanPath.startsWith('../')) {
-            cleanPath = cleanPath.substring(3);
+    <script>
+        // 从URL获取学号
+        function getStudentIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sid = urlParams.get('sid');
+            return sid;
         }
         
-        // 构建GitHub媒体代理URL
-        return `https://media.githubusercontent.com/media/${username}/${repo}/${branch}/${cleanPath}`;
-    }
-
-    // 判断是否在GitHub Pages环境
-    function isGitHubPages() {
-        return window.location.hostname.includes('github.io');
-    }
-
-    // 根据环境获取正确的图片路径
-    function getCorrectImagePath(relativePath) {
-        // 本地开发环境使用原始路径
-        if (!isGitHubPages()) {
-            return relativePath;
-        }
-        
-        // GitHub Pages环境使用媒体代理URL
-        return convertToGitHubMediaUrl(relativePath);
-    }
-
-    // 从URL获取学号
-    function getStudentIdFromURL() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const sid = urlParams.get('sid');
-        return sid;
-    }
-    
-    // 显示错误信息
-    function showError(message, isFatal = false) {
-        const profileCard = document.getElementById('profileCard');
-        const timelineSection = document.getElementById('timelineSection');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        
-        profileCard.style.display = 'none';
-        timelineSection.style.display = 'none';
-        loadingOverlay.style.display = 'none';
-        
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message animated-item';
-        errorDiv.innerHTML = `
-            <i class="fas fa-exclamation-triangle"></i>
-            <h2>${message}</h2>
-            <p>请检查学号是否正确，或联系管理员</p>
-            <a href="../index.html" class="btn-primary">
-                <i class="fas fa-home"></i> 返回首页
-            </a>
-        `;
-        
-        // 插入到容器中
-        const container = document.querySelector('.container');
-        container.insertBefore(errorDiv, profileCard);
-        
-        // 如果是严重错误，显示在页面中央
-        if (isFatal) {
-            errorDiv.style.margin = '40px auto';
-            errorDiv.style.maxWidth = '600px';
-        }
-    }
-    
-    // 加载成员数据
-    function loadMemberData(studentId) {
-        // 在 membersData 数组中查找匹配的成员
-        const member = membersData.find(m => m.studentId === studentId);
-        
-        if (!member) {
-            showError(`未找到学号为 "${studentId}" 的成员信息`);
-            return null;
-        }
-        
-        // 更新页面信息
-        updateMemberInfo(member);
-        
-        // 返回成员数据
-        return member;
-    }
-    
-    // 更新成员基本信息
-    function updateMemberInfo(member) {
-        document.getElementById('memberName').textContent = member.name;
-        document.getElementById('memberNameInfo').textContent = member.name;
-        document.getElementById('studentId').textContent = member.studentId;
-        
-        if (member.department) {
-            document.getElementById('memberDepartment').textContent = member.department;
-        }
-        
-        if (member.position) {
-            document.getElementById('memberPosition').textContent = member.position;
-        }
-        
-        if (member.rank) {
-            document.getElementById('memberBadge').textContent = member.rank;
-        }
-        
-        // 显示卡片
-        document.getElementById('profileCard').style.display = 'block';
-    }
-    
-    // 加载时间轴照片
-    function loadTimelinePhotos(member) {
-        const timelineItems = document.getElementById('timelineItems');
-        const noPhotosMessage = document.getElementById('noPhotosMessage');
-        const timelineSection = document.getElementById('timelineSection');
-        
-        // 获取照片数据
-        const photos = member.photos || [];
-        
-        if (photos.length === 0) {
-            timelineItems.innerHTML = '';
-            noPhotosMessage.style.display = 'block';
-            timelineSection.style.display = 'block';
-            return;
-        }
-        
-        // 清空现有内容
-        timelineItems.innerHTML = '';
-        
-        // 添加照片到时间轴
-        photos.forEach((photo, index) => {
-            const timelineItem = document.createElement('div');
-            timelineItem.className = 'timeline-item';
+        // 显示错误信息
+        function showError(message, isFatal = false) {
+            const profileCard = document.getElementById('profileCard');
+            const timelineSection = document.getElementById('timelineSection');
+            const loadingOverlay = document.getElementById('loadingOverlay');
             
-            // 构建照片路径和标题
-            let photoPath = typeof photo === 'string' ? photo : photo.src;
-            const photoTitle = typeof photo === 'string' ? `${member.name}的训练照片 ${index + 1}` : 
-                              (photo.title || `${member.name}的训练照片 ${index + 1}`);
+            profileCard.style.display = 'none';
+            timelineSection.style.display = 'none';
+            loadingOverlay.style.display = 'none';
             
-            // 根据环境修正图片路径
-            photoPath = getCorrectImagePath(photoPath);
-            
-            timelineItem.innerHTML = `
-                <div class="timeline-dot"></div>
-                <div class="timeline-photo">
-                    <img src="${photoPath}" alt="${photoTitle}" loading="lazy" 
-                         onerror="handleImageError(this, '${member.name}', ${index + 1}, '${photoPath}')">
-                </div>
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message animated-item';
+            errorDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>${message}</h2>
+                <p>请检查学号是否正确，或联系管理员</p>
+                <a href="../index.html" class="btn-primary">
+                    <i class="fas fa-home"></i> 返回首页
+                </a>
             `;
             
-            // 添加点击事件
-            const img = timelineItem.querySelector('img');
-            img.addEventListener('click', () => {
-                viewPhoto(photoPath, photoTitle);
+            // 插入到容器中
+            const container = document.querySelector('.container');
+            container.insertBefore(errorDiv, profileCard);
+            
+            // 如果是严重错误，显示在页面中央
+            if (isFatal) {
+                errorDiv.style.margin = '40px auto';
+                errorDiv.style.maxWidth = '600px';
+            }
+        }
+        
+        // 加载成员数据
+        function loadMemberData(studentId) {
+            // 在 membersData 数组中查找匹配的成员
+            const member = membersData.find(m => m.studentId === studentId);
+            
+            if (!member) {
+                showError(`未找到学号为 "${studentId}" 的成员信息`);
+                return null;
+            }
+            
+            // 更新页面信息
+            updateMemberInfo(member);
+            
+            // 返回成员数据
+            return member;
+        }
+        
+        // 更新成员基本信息
+        function updateMemberInfo(member) {
+            document.getElementById('memberName').textContent = member.name;
+            document.getElementById('memberNameInfo').textContent = member.name;
+            document.getElementById('studentId').textContent = member.studentId;
+            
+            if (member.department) {
+                document.getElementById('memberDepartment').textContent = member.department;
+            }
+            
+            if (member.position) {
+                document.getElementById('memberPosition').textContent = member.position;
+            }
+            
+            if (member.rank) {
+                document.getElementById('memberBadge').textContent = member.rank;
+            }
+            
+            // 显示卡片
+            document.getElementById('profileCard').style.display = 'block';
+        }
+        
+        // 加载时间轴照片
+        function loadTimelinePhotos(member) {
+            const timelineItems = document.getElementById('timelineItems');
+            const noPhotosMessage = document.getElementById('noPhotosMessage');
+            const timelineSection = document.getElementById('timelineSection');
+            
+            // 获取照片数据
+            const photos = member.photos || [];
+            
+            if (photos.length === 0) {
+                timelineItems.innerHTML = '';
+                noPhotosMessage.style.display = 'block';
+                timelineSection.style.display = 'block';
+                return;
+            }
+            
+            // 清空现有内容
+            timelineItems.innerHTML = '';
+            
+            // 添加照片到时间轴
+            photos.forEach((photo, index) => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'timeline-item';
+                
+                // 构建照片路径和标题
+                const photoPath = typeof photo === 'string' ? photo : photo.src;
+                const photoTitle = typeof photo === 'string' ? `${member.name}的训练照片 ${index + 1}` : 
+                                  (photo.title || `${member.name}的训练照片 ${index + 1}`);
+                
+                timelineItem.innerHTML = `
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-photo">
+                        <img src="${photoPath}" alt="${photoTitle}" loading="lazy" 
+                             onerror="handleImageError(this, '${member.name}', ${index + 1})">
+                    </div>
+                `;
+                
+                // 添加点击事件
+                const img = timelineItem.querySelector('img');
+                img.addEventListener('click', () => {
+                    viewPhoto(photoPath, photoTitle);
+                });
+                
+                timelineItems.appendChild(timelineItem);
             });
             
-            timelineItems.appendChild(timelineItem);
-        });
+            noPhotosMessage.style.display = 'none';
+            timelineSection.style.display = 'block';
+        }
         
-        noPhotosMessage.style.display = 'none';
-        timelineSection.style.display = 'block';
-    }
-    
-    // 处理图片加载错误
-    function handleImageError(img, name, index, originalSrc) {
-        console.error('图片加载失败:', {
-            成员: name,
-            照片索引: index,
-            原始路径: originalSrc,
-            当前路径: img.src,
-            错误时间: new Date().toISOString()
-        });
-        
-        // 如果是GitHub Pages环境，尝试使用媒体代理URL
-        if (isGitHubPages() && originalSrc && !originalSrc.includes('media.githubusercontent.com')) {
-            const mediaUrl = convertToGitHubMediaUrl(originalSrc);
-            console.log('尝试媒体代理URL:', mediaUrl);
-            
-            const retryImg = new Image();
-            retryImg.onload = function() {
-                img.src = mediaUrl;
-                img.alt = `${name}的照片 ${index}`;
-                console.log('✅ 使用媒体代理URL成功');
-            };
-            retryImg.onerror = function() {
-                // 媒体代理也失败，使用默认图片
-                img.src = 'https://images.unsplash.com/photo-1519861531473-920034658307?w=800&q=80';
-                img.alt = `${name}的照片 ${index}（默认图片）`;
-                console.log('❌ 媒体代理URL也失败，使用默认图片');
-            };
-            retryImg.src = mediaUrl;
-        } else {
+        // 处理图片加载错误
+        function handleImageError(img, name, index) {
             // 设置默认图片
             img.src = 'https://images.unsplash.com/photo-1519861531473-920034658307?w=800&q=80';
             img.alt = `${name}的照片 ${index}（默认图片）`;
+            
+            // 防止循环触发错误
+            img.onerror = null;
         }
         
-        // 防止循环触发错误
-        img.onerror = null;
-    }
-    
-    // 照片查看功能
-    function viewPhoto(src, title) {
-        const modal = document.getElementById('photoModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        
-        // 设置加载状态
-        modalImage.src = '';
-        modalImage.alt = '加载中...';
-        
-        // 预加载图片
-        const img = new Image();
-        img.onload = function() {
-            modalImage.src = src;
-            modalImage.alt = title;
-        };
-        img.onerror = function() {
-            console.error('图片加载失败:', src);
+        // 照片查看功能
+        function viewPhoto(src, title) {
+            const modal = document.getElementById('photoModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
             
-            // 如果媒体代理URL失败，尝试其他备用URL
-            if (src.includes('media.githubusercontent.com')) {
-                // 尝试GitHub Raw URL作为备选
-                const rawUrl = src.replace('media.githubusercontent.com/media', 'raw.githubusercontent.com');
-                const backupImg = new Image();
-                backupImg.onload = function() {
-                    modalImage.src = rawUrl;
-                    modalImage.alt = title + ' (备用链接)';
-                };
-                backupImg.onerror = function() {
-                    modalImage.src = 'https://images.unsplash.com/photo-1519861531473-920034658307?w=800&q=80';
-                    modalImage.alt = '图片加载失败，使用默认图片';
-                };
-                backupImg.src = rawUrl;
-            } else {
+            // 设置加载状态
+            modalImage.src = '';
+            modalImage.alt = '加载中...';
+            
+            // 预加载图片
+            const img = new Image();
+            img.onload = function() {
+                modalImage.src = src;
+                modalImage.alt = title;
+            };
+            img.onerror = function() {
                 modalImage.src = 'https://images.unsplash.com/photo-1519861531473-920034658307?w=800&q=80';
                 modalImage.alt = '图片加载失败';
-            }
-        };
-        img.src = src;
-        
-        modalTitle.textContent = title;
-        
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal() {
-        const modal = document.getElementById('photoModal');
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    }
-    
-    // 检查时间轴项目是否可见并触发动画
-    function checkTimelineItems() {
-        const timelineItems = document.querySelectorAll('.timeline-item:not(.active)');
-        const windowHeight = window.innerHeight;
-        
-        timelineItems.forEach((item, index) => {
-            const rect = item.getBoundingClientRect();
+            };
+            img.src = src;
             
-            // 当项目进入视口中间位置时触发动画
-            if (rect.top < windowHeight * 0.8) {
-                // 添加延迟效果，让照片依次飞入
+            modalTitle.textContent = title;
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('photoModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 检查时间轴项目是否可见并触发动画
+        function checkTimelineItems() {
+            const timelineItems = document.querySelectorAll('.timeline-item:not(.active)');
+            const windowHeight = window.innerHeight;
+            
+            timelineItems.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                
+                // 当项目进入视口中间位置时触发动画
+                if (rect.top < windowHeight * 0.8) {
+                    // 添加延迟效果，让照片依次飞入
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, index * 100); // 每张照片延迟100ms
+                }
+            });
+        }
+        
+        // 主初始化函数
+        async function initPage() {
+            try {
+                // 1. 获取学号
+                const studentId = getStudentIdFromURL();
+                
+                if (!studentId) {
+                    showError('未提供学号参数', true);
+                    return;
+                }
+                
+                // 2. 验证学号格式
+                if (!/^\d{10}$/.test(studentId)) {
+                    showError('学号格式不正确，请输入10位数字', true);
+                    return;
+                }
+                
+                // 3. 查找成员数据
+                const member = loadMemberData(studentId);
+                
+                if (!member) {
+                    return; // 错误已在loadMemberData中处理
+                }
+                
+                // 4. 加载时间轴照片
+                loadTimelinePhotos(member);
+                
+                // 5. 隐藏加载动画
                 setTimeout(() => {
-                    item.classList.add('active');
-                }, index * 100); // 每张照片延迟100ms
+                    document.getElementById('loadingOverlay').style.opacity = '0';
+                    setTimeout(() => {
+                        document.getElementById('loadingOverlay').style.display = 'none';
+                        
+                        // 初始化滚动监听
+                        window.addEventListener('scroll', checkTimelineItems);
+                        // 立即检查一次，让已经在视口中的照片飞入
+                        checkTimelineItems();
+                    }, 500);
+                }, 500);
+                
+            } catch (error) {
+                console.error('页面初始化失败:', error);
+                showError('页面加载失败，请刷新重试', true);
             }
-        });
-    }
-    
-    // 主初始化函数
-    async function initPage() {
-        try {
-            // 调试信息
-            console.log('环境检测:', {
-                当前URL: window.location.href,
-                主机名: window.location.hostname,
-                是否GitHubPages: isGitHubPages(),
-                路径: window.location.pathname
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initPage();
+            
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
             });
             
-            // 1. 获取学号
-            const studentId = getStudentIdFromURL();
-            
-            if (!studentId) {
-                showError('未提供学号参数', true);
-                return;
-            }
-            
-            // 2. 验证学号格式
-            if (!/^\d{10}$/.test(studentId)) {
-                showError('学号格式不正确，请输入10位数字', true);
-                return;
-            }
-            
-            // 3. 查找成员数据
-            const member = loadMemberData(studentId);
-            
-            if (!member) {
-                return; // 错误已在loadMemberData中处理
-            }
-            
-            console.log('加载成员:', member.name, '照片数量:', member.photos.length);
-            
-            // 4. 加载时间轴照片
-            loadTimelinePhotos(member);
-            
-            // 5. 隐藏加载动画
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loadingOverlay').style.display = 'none';
-                    
-                    // 初始化滚动监听
-                    window.addEventListener('scroll', checkTimelineItems);
-                    // 立即检查一次，让已经在视口中的照片飞入
-                    checkTimelineItems();
-                }, 500);
-            }, 500);
-            
-        } catch (error) {
-            console.error('页面初始化失败:', error);
-            showError('页面加载失败，请刷新重试', true);
-        }
-    }
-    
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', function() {
-        initPage();
-        
-        // ESC键关闭模态框
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
+            // 点击模态框外部关闭
+            document.getElementById('photoModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
         });
-        
-        // 点击模态框外部关闭
-        document.getElementById('photoModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-    });
-</script>
+    </script>
     
 </body>
 </html>
