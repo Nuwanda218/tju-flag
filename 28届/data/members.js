@@ -424,7 +424,7 @@ const membersData = [
         "studentId": "3025004352",
         "photos": [
           
-            "../images/28届预备队员/刘超/1.jpg",
+            "../images/28届预备队员/刘超/test.png",
             "../images/28届预备队员/刘超/2.jpg",
             "../images/28届预备队员/刘超/3.jpg",
             "../images/28届预备队员/刘超/4.jpg",
