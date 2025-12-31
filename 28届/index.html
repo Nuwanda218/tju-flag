@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天津大学国旗护卫队25261学期训练总结</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
     <!-- 引入Google Fonts手写字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
@@ -253,71 +253,8 @@
         body.splash-active footer {
             opacity: 0;
         }
-        
-        
-    
     </style>
 </head>
-<script>
-// 保存和恢复滚动位置的功能
-document.addEventListener('DOMContentLoaded', function() {
-    // 保存滚动位置
-    function saveScrollPosition() {
-        sessionStorage.setItem('indexScrollPosition', window.pageYOffset);
-        console.log('保存滚动位置:', window.pageYOffset);
-    }
-    
-    // 恢复滚动位置
-    function restoreScrollPosition() {
-        const savedPosition = sessionStorage.getItem('indexScrollPosition');
-        const shouldRestore = sessionStorage.getItem('restoreScroll');
-        
-        if (shouldRestore === 'true' && savedPosition) {
-            console.log('正在恢复滚动位置:', savedPosition);
-            
-            // 等待页面完全渲染
-            setTimeout(() => {
-                window.scrollTo({
-                    top: parseInt(savedPosition, 10),
-                    behavior: 'instant'
-                });
-                
-                // 清除标识
-                sessionStorage.removeItem('restoreScroll');
-                sessionStorage.removeItem('indexScrollPosition');
-            }, 100);
-        }
-    }
-    
-    // 监听页面显示事件（处理浏览器后退）
-    window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-            restoreScrollPosition();
-        }
-    });
-    
-    // 监听页面加载完成
-    window.addEventListener('load', function() {
-        restoreScrollPosition();
-    });
-    
-    // 监听离开页面
-    window.addEventListener('beforeunload', function() {
-        saveScrollPosition();
-    });
-    
-    // 为所有离开页面的链接添加点击事件
-    document.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && href.includes('.html') && !href.startsWith('#')) {
-            link.addEventListener('click', function() {
-                sessionStorage.setItem('restoreScroll', 'true');
-                saveScrollPosition();
-            });
-        }
-    });
-});
-</script>
 <body class="splash-active">
     <!-- 开屏动画 -->
     <div class="splash-screen" id="splashScreen">
@@ -325,8 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="splash-flag-bg" id="flagBackground"></div>
         
         <div class="splash-content">
-           
-            
             <h1 class="splash-text">欢迎你，天大国护队员</h1>
             
             <div class="splash-loader"></div>
@@ -395,14 +330,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img src="images/1008见面会/2.jpeg" alt="见面会照片2">
                             <img src="images/1008见面会/3.jpeg" alt="见面会照片3">
                             <img src="images/1008见面会/4.jpeg" alt="见面会照片4">
-                            <!--
-                            <div class="photo-placeholder">+2 更多照片</div>
-                            <div class="photo-placeholder">+1 训练瞬间</div>
-                            -->
                         </div>
                         
                         <!-- 查看详情链接 -->
-                        <a href="event-detail.html?id=meeting" class="view-more-link">查看详情与更多照片</a>
+                        <a href="pages/event-detail.html?id=meeting" class="view-more-link">查看详情与更多照片</a>
                     </div>
                 </div>
             </div>
@@ -427,15 +358,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="images/1014-16晚训/1.jpeg" alt="1014-16晚训2">
                         <img src="images/1014-16晚训/2.jpeg" alt="1014-16晚训3">
                         <img src="images/1014-16晚训/3.jpeg" alt="1014-16晚训4">
-                        <!--
-                        <div class="photo-placeholder">+3 训练照片</div>
-                        <div class="photo-placeholder">+1 队列训练</div>
-                        <div class="photo-placeholder">+1 动作指导</div>
-                        -->
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=night-training" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=night-training" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -459,14 +385,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="images/1018大训练/1.jpeg" alt="1018大训练2">
                         <img src="images/1018大训练/2.jpeg" alt="1018大训练3">
                         <img src="images/1018大训练/3.jpeg" alt="1018大训练4">
-                        <!--
-                        <div class="photo-placeholder">+2 集体合影</div>
-                        <div class="photo-placeholder">+1 训练特写</div>
-                        -->
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training1" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training1" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
         </section>
@@ -495,15 +417,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="images/1026大训练/1.jpeg" alt="1026大训练2">
                         <img src="images/1026大训练/2.jpeg" alt="1026大训练3">
                         <img src="images/1026大训练/3.jpeg" alt="1026大训练4">
-                        <!--
-                        <div class="photo-placeholder">+3 细节训练</div>
-                        <div class="photo-placeholder">+1 教官指导</div>
-                        <div class="photo-placeholder">+1 动作纠正</div>
-                        -->
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training2" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training2" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -527,14 +444,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="images/1102素质拓展活动/1.jpeg" alt="1102素质拓展活动2">
                         <img src="images/1102素质拓展活动/2.jpeg" alt="1102素质拓展活动3">
                         <img src="images/1102素质拓展活动/3.jpeg" alt="1102素质拓展活动4">
-                        <!--
-                        <div class="photo-placeholder">+2 团队游戏</div>
-                        <div class="photo-placeholder">+1 活动合影</div>
-                        -->
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=team-building" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=team-building" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -561,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training3" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training3" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
         </section>
@@ -571,7 +484,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2 class="phase-title center">检验与调整阶段</h2>
 
             <div class="event event-key">
-               
                 <div class="event-content">
                     <div class="event-time">
                         <i class="fas fa-clipboard-check"></i>
@@ -587,15 +499,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="images/1116第一次考核/1.jpeg" alt="1116第一次考核2">
                         <img src="images/1116第一次考核/2.jpeg" alt="1116第一次考核3">
                         <img src="images/1116第一次考核/3.jpeg" alt="1116第一次考核4">
-                        <!--
-                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=70" alt="考核照片2">
-                        <div class="photo-placeholder">+2 考核现场</div>
-                        <div class="photo-placeholder">+1 评委打分</div>
-                        -->
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=first-exam" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=first-exam" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
         </section>
@@ -627,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training4" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training4" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -654,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training5" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training5" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -681,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training6" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training6" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
@@ -708,12 +615,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=big-training7" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=big-training7" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
 
             <div class="event event-key">
-
                 <div class="event-content">
                     <div class="event-time">
                         <i class="fas fa-graduation-cap"></i>
@@ -732,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <!-- 查看详情链接 -->
-                    <a href="event-detail.html?id=graduation" class="view-more-link">查看详情与更多照片</a>
+                    <a href="pages/event-detail.html?id=graduation" class="view-more-link">查看详情与更多照片</a>
                 </div>
             </div>
         </section>
@@ -749,16 +655,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <h3>训练成果</h3>
                 <p>本学期共开展训练活动15次，包括8次大训练和7次晚训。全体队员通过系统训练，掌握了国旗护卫的基本动作和流程，队伍整体协调性显著提升。</p>
-                <a href="achievement.html" class="summary-link">查看详细训练成果</a>
+                <a href="pages/achievement.html" class="summary-link">查看详细训练成果</a>
             </div>
             
             <div class="summary-item">
                 <div class="summary-icon">
-                    <i class="fas fa-clock"></i> <!-- 修改图标为时钟 -->
+                    <i class="fas fa-clock"></i>
                 </div>
                 <h3>训练时长</h3>
-                <p>本学期总计训练时长约45小时，平均每次训练3小时。队员们克服学业压力，坚持准时参加训练，体现了高度的责任感和纪律性。</p> <!-- 修改描述 -->
-                <a href="team-building.html" class="summary-link">查看训练时长详情</a>
+                <p>本学期总计训练时长约45小时，平均每次训练3小时。队员们克服学业压力，坚持准时参加训练，体现了高度的责任感和纪律性。</p>
+                <a href="pages/train-time.html" class="summary-link">查看训练时长详情</a>
             </div>
             
             <div class="summary-item">
@@ -767,20 +673,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <h3>未来展望</h3>
                 <p>下学期将继续深化训练内容，提高动作标准，准备校级重要活动的升旗任务。同时，加强思想建设，培养队员的爱国情怀和责任担当。</p>
-                <a href="future.html" class="summary-link">查看未来规划</a>
+                <a href="pages/future.html" class="summary-link">查看未来规划</a>
             </div>
-            
-            <!-- 新增：队长和队委寄语卡片 -->
+            <!-- 
             <div class="summary-item">
                 <div class="summary-icon">
-                    <i class="fas fa-comment-alt"></i> <!-- 修改为消息图标 -->
+                    <i class="fas fa-comment-alt"></i>
                 </div>
                 <h3>寄语与期望</h3>
                 <p>队长和队委对全体队员的付出表示肯定，并寄予殷切期望。希望大家继续发扬国护精神，守护国旗尊严，展现天大学子风采。</p>
-                <a href="leaders-message.html" class="summary-link">查看寄语</a>
+                <a href="pages/leaders-message.html" class="summary-link">查看寄语</a>
             </div>
+            -->
         </div>
     </div>
+
 <!-- 学号查询入口 -->
 <section class="member-query-section">
     <div class="container">
@@ -805,12 +712,11 @@ document.addEventListener('DOMContentLoaded', function() {
 .member-query-section {
     background: linear-gradient(135deg, #f9f9f9 0%, #f0f2f5 100%);
     padding: 60px 0;
-    margin: 0; /* 移除上下margin */
+    margin: 0;
     position: relative;
     overflow: hidden;
 }
 
-/* 添加上方的浅色装饰线 */
 .member-query-section::before {
     content: '';
     position: absolute;
@@ -925,54 +831,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 }
 </style>
-
+<!-- 在 index.html 的查询部分后添加脚本 -->
 <script>
-// 学号查询功能
 document.addEventListener('DOMContentLoaded', function() {
-    const studentIdInput = document.getElementById('studentIdInput');
     const queryButton = document.getElementById('queryButton');
+    const studentIdInput = document.getElementById('studentIdInput');
     
-    queryButton.addEventListener('click', function() {
-        const studentId = studentIdInput.value.trim();
+    if (queryButton) {
+        queryButton.addEventListener('click', function() {
+            const studentId = studentIdInput.value.trim();
+            
+            if (!studentId) {
+                alert('请输入学号');
+                return;
+            }
+            
+            // 验证学号格式（10位数字）
+            if (!/^\d{10}$/.test(studentId)) {
+                alert('请输入10位数字的学号');
+                return;
+            }
+            
+            // 使用直接重定向方式（不依赖members.js数据）
+            window.location.href = `pages/member.html?sid=${studentId}`;
+        });
         
-        if (!studentId) {
-            alert('请输入您的学号');
-            studentIdInput.focus();
-            return;
-        }
-        
-        if (!/^\d{10}$/.test(studentId)) {
-            alert('请输入正确的10位数字学号');
-            studentIdInput.select();
-            return;
-        }
-        
-        // 添加查询动画
-        queryButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 查询中...';
-        queryButton.disabled = true;
-        
-        // 模拟查询过程
-        setTimeout(() => {
-            // 跳转到个人页面，携带学号参数
-            window.location.href = `member.html?sid=${studentId}`;
-        }, 800);
-    });
-    
-    // 按回车键也可查询
-    studentIdInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            queryButton.click();
-        }
-    });
-    
-    // 输入框获得焦点时清空内容
-    studentIdInput.addEventListener('focus', function() {
-        this.select();
-    });
+        // 允许按回车键查询
+        studentIdInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                queryButton.click();
+            }
+        });
+    }
 });
 </script>
 
-<!-- 页脚 - 优化版 -->
+<!-- 页脚 -->
 <footer class="page-footer">
     <div class="container">
         <!-- 校徽和队徽 -->
@@ -980,46 +874,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="logos-container">
                 <div class="logo-item">
                     <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
-                    <span class="logo-label">天津大学</span>
                 </div>
                 <div class="logo-item">
                     <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
-                    <span class="logo-label">国旗护卫队</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 队伍宣言 -->
-        <div class="footer-motto">
-            <h3>天津大学国旗护卫队</h3>
-            <p class="motto-text">"爱校护旗，奉献真心" —— 守护国旗尊严，展现天大学子风采</p>
-        </div>
-        
-        <!-- 版权信息 -->
-        <div class="footer-bottom">
-            <div class="copyright">
-                <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
-                <p class="designer">设计：朱贵骋 | 技术支持：朱贵骋</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<style>
-    <!-- 页脚 -->
-    <footer class="page-footer">
-    <div class="container">
-        <!-- 校徽和校名标识 -->
-        <div class="footer-brand">
-            <div class="logos-container">
-                <div class="logo-item">
-                    <img src="images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
-                    
-                </div>
-        
-                <div class="logo-item">
-                    <img src="images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
-                    
                 </div>
             </div>
         </div>
@@ -1033,7 +890,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- 版权信息 -->
         <div class="footer-bottom">
             <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
-            <p class="footer-note">设计：朱贵骋 | 技术支持：朱贵骋</p>
+            <p class="footer-note">设计：天津大学国旗护卫队宣传部门 | 技术支持：天津大学国旗护卫队宣传部门</p>
         </div>
     </div>
 </footer>
@@ -1052,7 +909,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gap: 15px;
     margin-bottom: 25px;
 }
-/* 校徽和队徽容器 */
+
 .footer-brand {
     text-align: center;
     margin-bottom: 30px;
@@ -1062,8 +919,8 @@ document.addEventListener('DOMContentLoaded', function() {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px; /* 两个logo之间的间距 */
-    flex-wrap: wrap; /* 小屏幕时自动换行 */
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
 .logo-item {
@@ -1072,67 +929,27 @@ document.addEventListener('DOMContentLoaded', function() {
     align-items: center;
 }
 
-/* 校徽和队徽样式 */
 .footer-logo-img {
     margin-bottom: 10px;
 }
 
-/* 校徽 - 调整大小 */
 .university-logo {
-    width: 250px;  /* 调整校徽宽度 */
-    height: 100px; /* 调整校徽高度 */
-    object-fit: contain; /* 保持图片比例 */
+    width: 250px;
+    height: 100px;
+    object-fit: contain;
 }
 
-/* 队徽 - 调整大小 */
 .team-logo {
-    width: 200px;  /* 调整队徽宽度 */
-    height: 100px; /* 调整队徽高度 */
-    object-fit: contain; /* 保持图片比例 */
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
 }
 
-/* 校名和队名标签 */
 .logo-label {
     font-size: 18px;
     font-weight: bold;
     color: #333;
     margin-top: 8px;
-}
-
-/* 响应式设计 - 在小屏幕上调整 */
-@media (max-width: 768px) {
-    .logos-container {
-        gap: 30px; /* 缩小间距 */
-    }
-    
-    .university-logo,
-    .team-logo {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .logo-label {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logos-container {
-        flex-direction: column; /* 垂直排列 */
-        gap: 20px;
-    }
-}
-
-.footer-brand-text h3 {
-    margin: 0;
-    color: #333;
-    font-size: 22px;
-}
-
-.footer-brand-text p {
-    margin: 5px 0 0;
-    color: #666;
-    font-size: 14px;
 }
 
 .footer-org {
@@ -1159,6 +976,30 @@ document.addEventListener('DOMContentLoaded', function() {
     color: #999;
     font-size: 14px;
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .logos-container {
+        gap: 30px;
+    }
+    
+    .university-logo,
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-label {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
 </style>
 
     <!-- 回到顶部按钮 -->
@@ -1166,104 +1007,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
-    <script>
-// 开屏动画控制脚本
-document.addEventListener('DOMContentLoaded', function() {
-    const splashScreen = document.getElementById('splashScreen');
-    const flagBackground = document.getElementById('flagBackground');
-    const body = document.body;
-    
-    // 检查是否已经看过开屏动画
-    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
-    
-    if (hasSeenSplash === 'true') {
-        // 如果已经看过，立即隐藏开屏动画
-        splashScreen.style.display = 'none';
-        body.classList.remove('splash-active');
-        
-        // 显示页面内容
-        const pageElements = document.querySelectorAll('.page-header, main, footer');
-        pageElements.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transition = 'opacity 0.5s ease';
-        });
-    } else {
-        // 第一次访问，显示开屏动画
-        // 设置开屏动画总时长
-        const splashDuration = 6500; // 6.5秒
-        
-        // 动画结束后移除开屏层并显示页面内容
-        setTimeout(function() {
-            splashScreen.style.display = 'none';
-            body.classList.remove('splash-active');
-            
-            // 显示页面内容
-            const pageElements = document.querySelectorAll('.page-header, main, footer');
-            pageElements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transition = 'opacity 0.5s ease';
-            });
-            
-            // 标记用户已经看过开屏动画
-            sessionStorage.setItem('hasSeenSplash', 'true');
-        }, splashDuration);
-        
-        // 如果用户点击屏幕，可以提前结束开屏动画
-        splashScreen.addEventListener('click', function() {
-            splashScreen.style.display = 'none';
-            body.classList.remove('splash-active');
-            
-            const pageElements = document.querySelectorAll('.page-header, main, footer');
-            pageElements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transition = 'opacity 0.5s ease';
-            });
-            
-            // 标记用户已经看过开屏动画
-            sessionStorage.setItem('hasSeenSplash', 'true');
-        });
-        
-        // 图片加载失败时的后备方案
-        const tjuLogo = document.getElementById('tjuLogo');
-        const guardLogo = document.getElementById('guardLogo');
-        
-        // 为队旗背景设置备用样式，如果图片加载失败
-        if (flagBackground) {
-            flagBackground.addEventListener('error', function() {
-                console.log('队旗图片加载失败，使用纯色背景');
-                this.style.background = 'linear-gradient(180deg, rgba(179, 25, 66, 0.8) 0%, rgba(139, 12, 47, 0.6) 100%)';
-                this.style.backgroundSize = 'cover';
-            });
-        }
-        
-        if (tjuLogo) {
-            tjuLogo.addEventListener('error', function() {
-                console.log('天津大学校徽图片加载失败，请检查路径');
-                // 创建替代元素
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'splash-logo';
-                fallbackDiv.innerHTML = '<i class="fas fa-university" style="font-size: 40px; color: white;"></i>';
-                this.parentNode.replaceChild(fallbackDiv, this);
-            });
-        }
-        
-        if (guardLogo) {
-            guardLogo.addEventListener('error', function() {
-                console.log('国旗护卫队队徽图片加载失败，请检查路径');
-                // 创建替代元素
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'splash-logo';
-                fallbackDiv.innerHTML = '<i class="fas fa-flag" style="font-size: 40px; color: white;"></i>';
-                this.parentNode.replaceChild(fallbackDiv, this);
-            });
-        }
-    }
-});
-
-// 页面跳转时清除标记（如果需要）
-// 如果用户点击链接离开首页，在返回时应该显示开屏动画，那么可以在链接点击时清除标记
-// 但根据需求，只需要第一次进入时显示，返回时不显示，所以不需要清除标记
-</script>
+    <script src="js/main.js"></script>
 </body>
 </html>
