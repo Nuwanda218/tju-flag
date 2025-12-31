@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件详情 - 天津大学国旗护卫队</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/../css/../css/../css/../css/main.css">
+    <style>
+        /* 事件详情页特定样式 */
+        :root {
+            --primary-color: #b31942;
+            --primary-dark: #8a0c2f;
+            --secondary-color: #0056b3;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 详情页头部 */
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 70px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .detail-header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .detail-title {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .detail-subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .event-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+        
+        .event-meta-item i {
+            color: #ffcc00;
+        }
+        
+        /* 返回链接 */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px 0 10px;
+            padding: 12px 28px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-link:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 详情内容 */
+        .detail-content {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .detail-main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .detail-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-text p {
+            margin-bottom: 25px;
+        }
+        
+        .detail-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight-box {
+            background-color: rgba(179, 25, 66, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* 照片库大展览 */
+        .photo-gallery {
+            margin: 60px 0;
+        }
+        
+        .gallery-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .gallery-title i {
+            color: var(--secondary-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 220px;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
+        }
+        
+        /* 模态框（图片大图展示） */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-nav:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        
+        /* 事件导航 */
+        .event-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .event-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background-color: white;
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            max-width: 45%;
+        }
+        
+        .event-nav-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .event-nav-link.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .event-nav-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-nav-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .event-nav-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- 详情页头部 -->
+    <header class="detail-header">
+        <div class="container">
+            <h1 class="detail-title" id="event-title">10.8 见面会</h1>
+            <p class="detail-subtitle">天津大学国旗护卫队2025-2026学年第一学期</p>
+            
+            <div class="event-meta">
+                <div class="event-meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="event-date">2025年10月8日</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="event-location">天津大学北洋园校区</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fas fa-users"></i>
+                    <span id="event-participants">45名队员</span>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="back-link" onclick="sessionStorage.setItem('restoreScroll', 'true')">
+                <i class="fas fa-arrow-left"></i>
+                返回训练总结主页
+            </a>
+        </div>
+    </header>
+
+    <!-- 详情内容 -->
+    <main class="detail-content">
+        <img id="event-main-image" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="事件主图" class="detail-main-image">
+        
+        <div class="detail-text" id="event-description">
+            <p>新一届国旗护卫队成员首次正式见面。通过见面会，明确了训练安排、纪律要求与整体目标，队伍完成了从个体到集体的初步转变。队员们相互认识，建立团队意识，为后续训练打下坚实基础。</p>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-bullseye"></i> 本次见面会主要目标</h3>
+                <p>1. 明确国旗护卫队的使命与责任，增强队员荣誉感</p>
+                <p>2. 建立团队组织架构，明确各分队职责</p>
+                <p>3. 制定详细训练计划，确保训练科学有序</p>
+                <p>4. 培养队员纪律意识，强调国旗护卫队的严肃性</p>
+            </div>
+            
+            <p>在见面会上，队长详细介绍了本学期训练计划，强调了国旗护卫队的光荣传统和肩负的责任。队员们进行了自我介绍，并分组进行了初步的交流活动，增进了彼此的了解。</p>
+            
+            <p>此外，会议还明确了训练纪律和考核标准，为后续的训练工作奠定了良好的基础。全体队员都表示将以饱满的热情和严谨的态度投入到训练中，为守护国旗尊严贡献力量。</p>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-star"></i> 见面会成果</h3>
+                <p>• 成功组建2025-2026学年国旗护卫队，共45名新队员</p>
+                <p>• 明确了每周一、三、五晚训，周日上午大训练的时间安排</p>
+                <p>• 建立了队员档案，记录了每名队员的基本信息和特长</p>
+                <p>• 选举产生了各分队负责人，完善了队伍组织结构</p>
+            </div>
+        </div>
+        
+        <!-- 照片库大展览 -->
+        <div class="photo-gallery">
+            <h2 class="gallery-title">
+                <i class="fas fa-images"></i>
+                活动照片大展览
+            </h2>
+            <div class="gallery-grid" id="gallery-container">
+                <!-- 图片将通过JS动态加载 -->
+            </div>
+        </div>
+        
+        <!-- 事件导航 -->
+        <div class="event-navigation">
+            <a href="#" class="event-nav-link" id="prev-event">
+                <i class="fas fa-chevron-left"></i>
+                <div class="event-nav-info">
+                    <span class="event-nav-label">上一个事件</span>
+                    <span class="event-nav-title" id="prev-event-title">10.8 见面会</span>
+                </div>
+            </a>
+            
+            <a href="#" class="event-nav-link" id="next-event">
+                <div class="event-nav-info">
+                    <span class="event-nav-label">下一个事件</span>
+                    <span class="event-nav-title" id="next-event-title">10.14-10.16 晚训</span>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+       <a href="../index.html" class="back-link" onclick="sessionStorage.setItem('restoreScroll', 'true')">
+            <i class="fas fa-arrow-left"></i>
+            返回训练总结主页
+        </a>
+    </main>
+
+    <!-- 图片大图展示模态框 -->
+    <div class="modal" id="image-modal">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <button class="modal-nav modal-prev" id="modal-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav modal-next" id="modal-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="modal-content">
+            <img class="modal-img" id="modal-image" src="" alt="">
+            <div class="modal-caption" id="modal-caption"></div>
+        </div>
+    </div>
+
+  <!-- 页脚 -->
+    <footer class="page-footer">
+    <div class="container">
+        <!-- 校徽和校名标识 -->
+        <div class="footer-brand">
+            <div class="logos-container">
+                <div class="logo-item">
+                    <img src="../images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    
+                </div>
+        
+                <div class="logo-item">
+                    <img src="../images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- 队伍信息 -->
+        <div class="footer-org">
+            <div class="footer-logo">天津大学国旗护卫队</div>
+            <p class="footer-text">爱校护旗，奉献真心。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+        </div>
+        
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
+            <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+            <p class="footer-note">设计：天津大学国旗护卫队宣传部门 | 技术支持：天津大学国旗护卫队宣传部门</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+.page-footer {
+    background: #f8f9fa;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+/* 校徽和队徽容器 */
+.footer-brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* 两个logo之间的间距 */
+    flex-wrap: wrap; /* 小屏幕时自动换行 */
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 校徽和队徽样式 */
+.footer-logo-img {
+    margin-bottom: 10px;
+}
+
+/* 校徽 - 调整大小 */
+.university-logo {
+    width: 250px;  /* 调整校徽宽度 */
+    height: 100px; /* 调整校徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 队徽 - 调整大小 */
+.team-logo {
+    width: 200px;  /* 调整队徽宽度 */
+    height: 100px; /* 调整队徽高度 */
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 校名和队名标签 */
+.logo-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* 响应式设计 - 在小屏幕上调整 */
+@media (max-width: 768px) {
+    .logos-container {
+        gap: 30px; /* 缩小间距 */
+    }
+    
+    .university-logo,
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-label {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        flex-direction: column; /* 垂直排列 */
+        gap: 20px;
+    }
+}
+
+.footer-brand-text h3 {
+    margin: 0;
+    color: #333;
+    font-size: 22px;
+}
+
+.footer-brand-text p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer-org {
+    margin-bottom: 25px;
+}
+
+.footer-logo {
+        font-size: 30px; /* 调整到您需要的大小 */
+        font-weight: 700; /* 700对应Bold，600对应Medium，400对应Regular */
+        color: #333;
+        margin-bottom: 10px;
+        font-family: 'Alibaba PuHuiTi', 'Microsoft YaHei', sans-serif;
+        letter-spacing: 1px; /* 可选：调整字间距 */
+    }
+
+.footer-text {
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    color: #999;
+    font-size: 14px;
+}
+</style>
+
+    <script>
+        // 完整的事件数据
+        const events = {
+            'meeting': {
+                id: 'meeting',
+                title: '10.8 见面会',
+                date: '2025年10月8日',
+                location: '天津大学北洋园校区',
+                participants: '28届预备队员、27届队委会、26届队长团',
+                mainImage: '../images/1008见面会/0.jpeg',
+                description: `新一届国旗护卫队成员首次正式见面。通过见面会，明确了训练安排、纪律要求与整体目标，队伍完成了从个体到集体的初步转变。队员们相互认识，建立团队意识，为后续训练打下坚实基础。
+                
+                在见面会上，队长详细介绍了本学期训练计划，强调了国旗护卫队的光荣传统和肩负的责任。队员们进行了自我介绍，并分组进行了初步的交流活动，增进了彼此的了解。
+                
+                此外，会议还明确了训练纪律和考核标准，为后续的训练工作奠定了良好的基础。全体队员都表示将以饱满的热情和严谨的态度投入到训练中，为守护国旗尊严贡献力量。`,
+                images: [
+                    {url: '../images/1008见面会/1.jpeg', caption: '队员分组进行自我介绍'},
+                    {url: '../images/1008见面会/2.jpeg', caption: '新队员自我介绍环节'},
+                    {url: '../images/1008见面会/3.jpeg', caption: '分组交流活动'},
+                    {url: '../images/1008见面会/4.jpeg', caption: '队员认真聆听要求'},
+                    {url: '../images/1008见面会/5.jpeg', caption: '队员分组交流'},
+                    {url: '../images/1008见面会/6.jpeg', caption: '组内队员交流'},
+                    {url: '../images/1008见面会/7.jpeg', caption: '队员齐唱队歌'},
+                    {url: '../images/1008见面会/8.jpeg', caption: '小心翼翼倒可乐'},
+                    {url: '../images/1008见面会/9.jpeg', caption: '组员正在交流'},
+                    {url: '../images/1008见面会/10.jpeg', caption: '队员合影留念'}
+                ]
+            },
+            'night-training': {
+                id: 'night-training',
+                title: '10.14–10.16 晚训',
+                date: '2025年10月14-16日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委',
+                mainImage: '../images/1014-16晚训/0.jpeg',
+                description: `训练正式进入常态化。通过连续多天的晚训，队员开始系统学习基础队列动作和规范要求，在反复练习中逐步适应训练节奏。晚间训练帮助队员们克服时间困难，培养纪律性，为后续训练打下基础。
+                
+                晚训内容包括：基本队列动作训练、步伐练习、转向训练等。训练队委对每个动作进行细致讲解和示范，队员们认真学习并反复练习。
+                
+                通过连续三天的晚训，队员们初步掌握了国旗护卫的基本动作要领，为后续的训练打下了一定的基础。`,
+                images: [
+                    {url: '../images/1014-16晚训/1.jpeg', caption: '军姿训练开始'},
+                    {url: '../images/1014-16晚训/2.jpeg', caption: '队伍左前方'},
+                    {url: '../images/1014-16晚训/3.jpeg', caption: '队伍右后方'},
+                    {url: '../images/1014-16晚训/4.jpeg', caption: '活动一下'},
+                    {url: '../images/1014-16晚训/5.jpeg', caption: '向左看齐'},
+                    {url: '../images/1014-16晚训/6.jpeg', caption: '看看自己最开始军姿站的样子'},
+                    {url: '../images/1014-16晚训/7.jpeg', caption: '动作纠正'},
+                    {url: '../images/1014-16晚训/8.jpeg', caption: '刚开始做深蹲俯卧撑'},
+                    {url: '../images/1014-16晚训/9.jpeg', caption: '下训总结'}
+                ]
+            },
+            'big-training1': {
+                id: 'big-training1',
+                title: '10.18 大训练',
+                date: '2025年10月18日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1018大训练/0.jpeg',
+                description: `首次集中大训练，对前期学习的动作进行整体检查与统一，队伍开始形成基本的动作框架和协同意识。通过集体合练，队员们相互观察、学习，初步形成整齐划一的动作标准。
+                
+                大训练中，训练队委对队员们的动作进行了逐一检查，纠正了不规范的动作，确保整个队伍的动作整齐划一。
+                
+                通过这次大训练，队员们深刻体会到了团队协作的重要性，也为后续的训练积累了宝贵的经验。`,
+                images: [
+                    {url: '../images/1018大训练/1.jpeg', caption: '摆臂训练'},
+                    {url: '../images/1018大训练/2.jpeg', caption: '军姿训练'},
+                    {url: '../images/1018大训练/3.jpeg', caption: '第一次站台阶军姿'},
+                    {url: '../images/1018大训练/4.jpeg', caption: '入队就是为了这面旗'},
+                    {url: '../images/1018大训练/5.jpeg', caption: '摆臂不要勾手腕'},
+                    {url: '../images/1018大训练/6.jpeg', caption: '队委正在进行动作讲解'},
+                    {url: '../images/1018大训练/7.jpeg', caption: '集体合练'},
+                    {url: '../images/1018大训练/8.jpeg', caption: '27届和28届预备队员一起练'},
+                    {url: '../images/1018大训练/9.jpeg', caption: '队员休息调整'}
+                ]
+            },
+            'big-training2': {
+                id: 'big-training2',
+                title: '10.26 大训练',
+                date: '2025年10月26日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1026大训练/0.jpeg',
+                description: `武装部指导老师朱丙峰老师莅临现场指导训练
+                在前期训练基础上，对动作细节进行反复打磨，通过高强度重复训练，逐步减少个体差异，提升整体一致性。教官对每个动作进行精细化指导，队员们逐渐形成肌肉记忆。
+                
+                本次训练重点强化了齐步走的节奏控制和手臂摆动幅度，确保整个方阵动作整齐划一。通过分组练习和集体合练相结合的方式，队员们相互学习，共同进步。`,
+                images: [
+                    {url: '../images/1026大训练/1.jpeg', caption: '为啥没帽子'},
+                    {url: '../images/1026大训练/2.jpeg', caption: '怎么闭着眼睛站军姿'},
+                    {url: '../images/1026大训练/3.jpeg', caption: '朱老师讲话'},
+                    {url: '../images/1026大训练/4.jpeg', caption: '俯卧撑'},
+                    {url: '../images/1026大训练/5.jpeg', caption: '你们之后为啥不这么做了'},
+                    {url: '../images/1026大训练/6.jpeg', caption: '纠正摆臂动作'},
+                    {url: '../images/1026大训练/7.jpeg', caption: '纠正摆臂'},
+                    {url: '../images/1026大训练/8.jpeg', caption: '台阶军姿的感觉不要忘'},
+                    {url: '../images/1026大训练/9.jpeg', caption: '刚开始走齐步'}
+                ]
+            },
+            'team-building': {
+                id: 'team-building',
+                title: '11.2 素质拓展活动',
+                date: '2025年11月2日',
+                location: '天津大学素质拓展基地',
+                participants: '28届预备队员、27届队委会、26届队长团',
+                mainImage: '../images/1102素质拓展活动/0.jpeg',
+                description: `通过素质拓展活动，加强队员之间的沟通与协作，增强队伍凝聚力，在训练之外进一步建立信任与默契。活动中队员们展现出的团队精神为后续训练提供了强大的精神支持。
+                
+                活动包括团队破冰、穿越火线、团队协作游戏等多个环节。通过这些活动，队员们不仅放松了身心，更重要的是加深了彼此的了解，增强了团队的凝聚力。`,
+                images: [
+                    {url: '../images/1102素质拓展活动/1.jpeg', caption: '后背交给队友的感觉'},
+                    {url: '../images/1102素质拓展活动/2.jpeg', caption: '听指令做动作'},
+                    {url: '../images/1102素质拓展活动/3.jpeg', caption: '你还记得对面的队友是谁吗'},
+                    {url: '../images/1102素质拓展活动/4.jpeg', caption: '团队讨论策略'},
+                    {url: '../images/1102素质拓展活动/5.jpeg', caption: '队员欢乐时刻'},
+                    {url: '../images/1102素质拓展活动/6.jpeg', caption: '团队协作游戏'},
+                    {url: '../images/1102素质拓展活动/7.jpeg', caption: '活动总结分享'},
+                    {url: '../images/1102素质拓展活动/8.jpeg', caption: '笑得挺开心'},
+                    {url: '../images/1102素质拓展活动/9.jpeg', caption: '队员放松交流'}
+                ]
+            },
+            'big-training3': {
+                id: 'big-training3',
+                title: '11.9 大训练',
+                date: '2025年11月9日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1109大训练/0.jpeg',
+                description: `训练进入相对稳定阶段，队伍动作完成度和整体节奏明显提升，成员逐渐形成对训练强度与要求的心理预期。队员们开始从被动接受训练转变为主动追求动作完美。（希望你们真的是这样）
+                
+                本次训练重点加强了行进间的协调性和节奏感，通过音乐节拍辅助训练，使整个方阵的步伐更加整齐统一。队员们展现出良好的精神状态和训练热情（）。`,
+                images: [
+                    {url: '../images/1109大训练/1.jpeg', caption: '那天天气不错'},
+                    {url: '../images/1109大训练/2.jpeg', caption: '暗中密谋'},
+                    {url: '../images/1109大训练/3.jpeg', caption: '那时候齐步还是这样走的'},
+                    {url: '../images/1109大训练/4.jpeg', caption: '爱笑挺好的'},
+                    {url: '../images/1109大训练/5.jpeg', caption: '整体合练场景'},
+                    {url: '../images/1109大训练/6.jpeg', caption: '动作细节纠正'},
+                    {url: '../images/1109大训练/7.jpeg', caption: '训练间歇休息'},
+                    {url: '../images/1109大训练/8.jpeg', caption: '准备对踢吗'},
+                    {url: '../images/1109大训练/9.jpeg', caption: '队员调整状态'}
+                ]
+            },
+            'first-exam': {
+                id: 'first-exam',
+                title: '11.16 第一次考核',
+                date: '2025年11月16日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1116第一次考核/0.jpeg',
+                description: `开展第一次阶段性考核，对队员动作规范、整体配合和训练成果进行集中检验，考核结果为后续训练提供了明确的调整方向。通过考核发现的问题，为个性化训练方案的制定提供了依据。
+                
+                考核内容包括单个军人队列动作、班排队列动作两个部分。评委由队委和老队员组成，对每位队员的表现进行综合评价。`,
+                images: [
+                    {url: '../images/1116第一次考核/1.jpeg', caption: '军姿'},
+                    {url: '../images/1116第一次考核/2.jpeg', caption: '自己看吧，不写了'},
+                    {url: '../images/1116第一次考核/3.jpeg', caption: '太冷了活动一下'},
+                    {url: '../images/1116第一次考核/4.jpeg', caption: '应该是转体考核'},
+                    {url: '../images/1116第一次考核/5.jpeg', caption: '评委认真评分'},
+                    {url: '../images/1116第一次考核/6.jpeg', caption: '考核全景记录'},
+                    {url: '../images/1116第一次考核/7.jpeg', caption: '老鹰捉小鸡'},
+                    {url: '../images/1116第一次考核/8.png', caption: '继续密谋'},
+                    {url: '../images/1116第一次考核/9.jpeg', caption: '活动游戏'}
+                ]
+            },
+            'big-training4': {
+                id: 'big-training4',
+                title: '11.23 大训练',
+                date: '2025年11月23日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1123大训练/0.jpeg',
+                description: `给第一次考核获奖队员颁奖
+                围绕考核中暴露的问题进行针对性强化训练，进一步提升动作稳定性与执行力。针对薄弱环节进行重点突破，确保每位队员都能达到标准要求。
+                
+                本次训练重点针对考核中发现的共性问题进行集中纠正，包括手臂摆动高度不一致、步幅大小不均等问题。通过分解动作练习和慢动作回放分析，帮助队员理解动作要领。`,
+                images: [
+                    {url: '../images/1123大训练/1.jpeg', caption: '训练标兵'},
+                    {url: '../images/1123大训练/2.jpeg', caption: '自己看吧'},
+                    {url: '../images/1123大训练/3.jpeg', caption: '你们商量分工合作是吗'},
+                    {url: '../images/1123大训练/4.jpeg', caption: '队长指导训练'},
+                    {url: '../images/1123大训练/5.jpeg', caption: '奖状'},
+                    {url: '../images/1123大训练/6.jpeg', caption: '摆臂不要勾手腕，手捏紧'},
+                    {url: '../images/1123大训练/7.jpeg', caption: '训练成果检验'},
+                    {url: '../images/1123大训练/8.jpeg', caption: '台阶军姿的感觉不要忘'},
+                    {url: '../images/1123大训练/9.jpeg', caption: '队员调整状态'}
+                ]
+            },
+            'big-training5': {
+                id: 'big-training5',
+                title: '11.30 大训练',
+                date: '2025年11月30日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1130大训练/0.jpeg',
+                description: `持续巩固训练成果，在重复中追求细节一致，确保整体表现趋于成熟。通过反复磨合，队员之间的配合更加默契，整体动作更加流畅。
+                
+                本次训练重点强化行进间的协调配合，通过模拟正式升旗仪式的全流程演练，检验训练成果。队员们表现出色，动作整齐划一，展现出良好的训练成果。`,
+                images: [
+                    {url: '../images/1130大训练/1.jpeg', caption: '这张合影还会出现很多次'},
+                    {url: '../images/1130大训练/2.jpeg', caption: '枪支动作我已经不想说了'},
+                    {url: '../images/1130大训练/3.jpeg', caption: '第一次在灯柱下端腿'},
+                    {url: '../images/1130大训练/4.jpeg', caption: '严肃一点的合影'},
+                    {url: '../images/1130大训练/5.jpeg', caption: '还是枪支，自己看'},
+                    {url: '../images/1130大训练/6.jpeg', caption: '训练间歇休息'},
+                    {url: '../images/1130大训练/7.jpeg', caption: '刚开始走正步'},
+                    {url: '../images/1130大训练/8.jpeg', caption: '枪置地不是枪放下'},
+                    {url: '../images/1130大训练/9.jpeg', caption: '队员状态调整'}
+                ]
+            },
+            'big-training6': {
+                id: 'big-training6',
+                title: '12.7 大训练',
+                date: '2025年12月7日',
+                location: '天津大学北洋园校区东门广场',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1207大训练/0.jpeg',
+                description: `训练进入收官准备阶段，重点放在动作完整度与队伍整体气质的塑造。队员们开始注重仪容仪表和精神面貌，展现出国旗护卫队应有的风采。
+                
+                本次训练除了动作规范外，还特别强调了队员的精神状态和整体气质。通过仪容仪表检查、精神面貌训练等内容，全面提升队伍的综合素质。`,
+                images: [
+                    {url: '../images/1207大训练/1.jpeg', caption: '蹬翘不会落'},
+                    {url: '../images/1207大训练/2.jpeg', caption: '仪容仪表检查'},
+                    {url: '../images/1207大训练/3.jpeg', caption: '俯卧撑好啊，得做啊'},
+                    {url: '../images/1207大训练/4.jpeg', caption: '端感，也要记住这种抬腿的感觉'},
+                    {url: '../images/1207大训练/5.jpeg', caption: '动作完整度训练'},
+                    {url: '../images/1207大训练/6.jpeg', caption: '纠正枪支动作'},
+                    {url: '../images/1207大训练/7.jpeg', caption: '“大佛”来了'},
+                    {url: '../images/1207大训练/8.jpeg', caption: '枪不要偏向脑袋，你们多找照片看看'},
+                    {url: '../images/1207大训练/9.jpeg', caption: '队员状态调整'}
+                ]
+            },
+            'big-training7': {
+                id: 'big-training7',
+                title: '12.14 大训练',
+                date: '2025年12月14日',
+                location: '天津大学北洋园校区图书馆地下车库',
+                participants: '28届预备队员、带训队委及教练员',
+                mainImage: '../images/1214大训练/0.jpeg',
+                description: `天气较冷，训练地点移至室内地下车库
+                对最终考核内容进行集中演练，强化规范意识，为结训做好充分准备。这是学期训练的最后一次集中训练，队员们全力以赴，展现最佳状态。
+                
+                本次训练模拟了最终考核的全过程，从入场、队列表演到退场，每个环节都按照考核标准进行。队员们表现出色，为学期的训练画上了圆满的句号。`,
+                images: [
+                    {url: '../images/1214大训练/1.jpeg', caption: '最终考核演练'},
+                    {url: '../images/1214大训练/2.jpeg', caption: '入场仪式训练'},
+                    {url: '../images/1214大训练/3.jpeg', caption: '休息调整'},
+                    {url: '../images/1214大训练/5.jpeg', caption: '全流程合练'},
+                    {url: '../images/1214大训练/6.jpeg', caption: '训练紧张进行'},
+                    {url: '../images/1214大训练/7.jpeg', caption: '在给啥'},
+                    {url: '../images/1214大训练/8.jpeg', caption: '对踢得出腿感觉也要记住'},
+                    {url: '../images/1214大训练/9.jpeg', caption: '休息调整'}
+
+                ]
+            },
+            'graduation': {
+                id: 'graduation',
+                title: '12.21 第二次动作考核与结训晚会',
+                date: '2025年12月21日',
+                location: '天津大学北洋园校区',
+                participants: '武装部指导老师、28届预备队员、27届队委会、26届队长团',
+                mainImage: '../images/1221第二次动作考核与结训晚会/0.jpeg',
+                description: `完成第二次动作考核，对本学期训练成果进行最终检验，随后举行结训晚会，为本阶段训练画上阶段性句号。晚会中表彰优秀队员，总结训练经验，增强队伍凝聚力。
+                
+                晚会上，队员们表演了精彩的节目，分享了训练心得，表彰了优秀队员，为学期的训练生活留下了美好的回忆。
+                在这里我也补充一两句吧，制作这个网页是想让大家对本学期的训练有一个回顾，并不代表大家的动作已经符合要求了，也不代表训练已经结束了，28届预备队员还有很长一段路要走，非训练时间，我们可以轻松愉快，但是训练时，必须要严格要求自己，争取早日达到国旗护卫队的标准。希望大家继续努力，加油！`,
+                images: [
+                    {url: '../images/1221第二次动作考核与结训晚会/1.jpeg', caption: '合唱情歌王'},
+                    {url: '../images/1221第二次动作考核与结训晚会/2.jpeg', caption: '给队员颁奖'},
+                    {url: '../images/1221第二次动作考核与结训晚会/3.jpeg', caption: '考核中'},
+                    {url: '../images/1221第二次动作考核与结训晚会/4.jpeg', caption: '别忘了那天的饺子'},
+                    {url: '../images/1221第二次动作考核与结训晚会/5.jpeg', caption: '谁想跳的'},
+                    {url: '../images/1221第二次动作考核与结训晚会/6.jpeg', caption: '不像演的'},
+                    {url: '../images/1221第二次动作考核与结训晚会/7.jpeg', caption: '梁老师点评过的歌曲'},
+                    {url: '../images/1221第二次动作考核与结训晚会/8.jpeg', caption: '不给别人递话筒'},
+                    {url: '../images/1221第二次动作考核与结训晚会/9.jpeg', caption: '本学期训练结束，之后的训练还将继续'}
+                ]
+            }
+        };
+
+        // 事件顺序数组（按照时间顺序）
+        const eventOrder = [
+            'meeting',          // 10.8
+            'night-training',   // 10.14-16
+            'big-training1',    // 10.18
+            'big-training2',    // 10.26
+            'team-building',    // 11.2
+            'big-training3',    // 11.9
+            'first-exam',       // 11.16
+            'big-training4',    // 11.23
+            'big-training5',    // 11.30
+            'big-training6',    // 12.7
+            'big-training7',    // 12.14
+            'graduation'        // 12.21
+        ];
+
+// 添加页面初始化函数
+function initializePage() {
+    // 获取URL参数中的事件ID
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('id');
+    
+    // 如果没有ID参数或事件不存在，使用默认事件
+    const currentEventId = eventId && events[eventId] ? eventId : 'meeting';
+    const currentEvent = events[currentEventId];
+    
+    if (!currentEvent) {
+        // 如果事件不存在，重定向到主页
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // 填充页面内容
+    document.getElementById('event-title').textContent = currentEvent.title;
+    document.getElementById('event-date').textContent = currentEvent.date;
+    document.getElementById('event-location').textContent = currentEvent.location;
+    document.getElementById('event-participants').textContent = currentEvent.participants;
+    document.getElementById('event-main-image').src = currentEvent.mainImage;
+    document.getElementById('event-description').innerHTML = 
+        currentEvent.description.replace(/\n/g, '<br><br>');
+    
+    // 生成图片库
+    const galleryContainer = document.getElementById('gallery-container');
+    galleryContainer.innerHTML = '';
+    currentEvent.images.forEach((img, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        galleryItem.innerHTML = `
+            <img src="${img.url}" alt="${img.caption}" data-index="${index}">
+            <div class="gallery-item-caption">${img.caption}</div>
+        `;
+        galleryContainer.appendChild(galleryItem);
+    });
+    
+    // 设置上一个/下一个事件链接
+    const currentIndex = eventOrder.indexOf(currentEventId);
+    
+    if (currentIndex > 0) {
+        const prevEventId = eventOrder[currentIndex - 1];
+        const prevEvent = events[prevEventId];
+        document.getElementById('prev-event').href = `event-detail.html?id=${prevEventId}`;
+        document.getElementById('prev-event-title').textContent = prevEvent.title;
+    } else {
+        document.getElementById('prev-event').classList.add('disabled');
+        document.getElementById('prev-event').href = '#';
+    }
+    
+    if (currentIndex < eventOrder.length - 1) {
+        const nextEventId = eventOrder[currentIndex + 1];
+        const nextEvent = events[nextEventId];
+        document.getElementById('next-event').href = `event-detail.html?id=${nextEventId}`;
+        document.getElementById('next-event-title').textContent = nextEvent.title;
+    } else {
+        document.getElementById('next-event').classList.add('disabled');
+        document.getElementById('next-event').href = '#';
+    }
+    
+    // 初始化模态框功能
+    initModal();
+}
+
+// 初始化模态框
+function initModal() {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+    
+    let currentImageIndex = 0;
+    let currentEventImages = [];
+    
+    // 获取当前事件的所有图片
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('id') || 'meeting';
+    currentEventImages = events[eventId]?.images || [];
+    
+    // 为所有图片添加点击事件
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('gallery-item') || 
+            e.target.closest('.gallery-item')) {
+            const galleryItem = e.target.closest('.gallery-item');
+            const imgIndex = parseInt(galleryItem.querySelector('img').dataset.index);
+            openModal(imgIndex);
+        }
+    });
+    
+    function openModal(index) {
+        currentImageIndex = index;
+        updateModal();
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+    }
+    
+    function updateModal() {
+        const img = currentEventImages[currentImageIndex];
+        if (img) {
+            modalImg.src = img.url;
+            modalCaption.textContent = img.caption;
+        }
+        
+        // 更新导航按钮状态
+        modalPrev.style.display = currentImageIndex > 0 ? 'flex' : 'none';
+        modalNext.style.display = currentImageIndex < currentEventImages.length - 1 ? 'flex' : 'none';
+    }
+    
+    // 关闭模态框
+    modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // 点击模态框背景关闭
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // 上一张
+    modalPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateModal();
+        }
+    });
+    
+    // 下一张
+    modalNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentImageIndex < currentEventImages.length - 1) {
+            currentImageIndex++;
+            updateModal();
+        }
+    });
+    
+    // 键盘导航
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === 'flex') {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
+                currentImageIndex--;
+                updateModal();
+            } else if (e.key === 'ArrowRight' && currentImageIndex < currentEventImages.length - 1) {
+                currentImageIndex++;
+                updateModal();
+            }
+        }
+    });
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</body>
+</html>

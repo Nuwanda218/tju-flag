@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>队长和队委寄语 - 天津大学国旗护卫队</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/leaders-message.css">
+</head>
+<body>
+    <!-- 详情页头部 -->
+    <header class="detail-header">
+        <div class="container">
+            <h1 class="detail-title" id="pageTitle">队长和队委寄语</h1>
+            <p class="detail-subtitle" id="pageSubtitle">天津大学国旗护卫队第28届队长与队委的深情嘱托与殷切期望</p>
+            <a href="../index.html" class="back-link" onclick="sessionStorage.setItem('restoreScroll', 'true')">
+                返回训练总结主页
+            </a>
+        </div>
+    </header>
+
+    <!-- 详情内容 -->
+    <main class="detail-content">
+        <h2>寄语总览</h2>
+        <p>每一位队委的寄语都承载着对国旗护卫队的深厚情感和对新队员的殷切期望。这些话语不仅是经验的分享，更是精神的传承。通过阅读这些寄语，28届预备队员可以更好地理解国旗护卫队的使命与责任。</p>
+        
+        <!-- 统计数据 -->
+        <div class="stats-container" id="statsContainer">
+            <!-- 动态加载统计数据 -->
+        </div>
+
+        <!-- 分类筛选 -->
+        <div class="filter-buttons" id="filterButtons">
+            <!-- 动态加载筛选按钮 -->
+        </div>
+
+        <!-- 寄语内容 -->
+        <section class="message-section">
+            <div class="message-grid" id="messagesContainer">
+                <!-- 动态加载寄语卡片 -->
+            </div>
+
+            <!-- 分页导航 -->
+            <div class="pagination" id="pagination">
+                <!-- 动态加载分页 -->
+            </div>
+
+            <div style="text-align: center;">
+                <a href="../index.html" class="back-link" onclick="sessionStorage.setItem('restoreScroll', 'true')">
+                    <i class="fas fa-arrow-left"></i> 返回训练总结主页
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="page-footer">
+        <div class="container">
+            <!-- 校徽和校名标识 -->
+            <div class="footer-brand">
+                <div class="logos-container">
+                    <div class="logo-item">
+                        <img src="../images/tju-logo.png" alt="天津大学校徽" class="footer-logo-img university-logo">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../images/team-logo.png" alt="国旗护卫队队徽" class="footer-logo-img team-logo">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 队伍信息 -->
+            <div class="footer-org">
+                <div class="footer-logo">天津大学国旗护卫队</div>
+                <p class="footer-text">爱校护旗，奉献真心。守护国旗尊严，展现天大学子风采，是我们不变的誓言与追求。</p>
+            </div>
+            
+            <!-- 版权信息 -->
+            <div class="footer-bottom">
+                <p>© 2025-2026 天津大学国旗护卫队 版权所有</p>
+                <p class="footer-note">设计：天津大学国旗护卫队宣传部门 | 技术支持：天津大学国旗护卫队宣传部门</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态框 -->
+    <div id="modalContainer" class="modal" style="display: none;">
+        <!-- 动态加载模态框内容 -->
+    </div>
+
+    <!-- 脚本引入 -->
+    <script src="../js/leaders-message.js"></script>
+</body>
+</html>
