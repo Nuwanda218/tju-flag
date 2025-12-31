@@ -1,0 +1,530 @@
+/* 详情页通用样式 */
+.detail-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 70px 0 50px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detail-title {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.detail-subtitle {
+    font-size: 20px;
+    opacity: 0.95;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.detail-content {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 25px;
+}
+
+.detail-content h2 {
+    color: var(--primary-dark);
+    font-size: 28px;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-light);
+    font-weight: 600;
+}
+
+.detail-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* 统计数据样式 */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 40px 0 60px;
+}
+
+.stat-item {
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 15px 0;
+    letter-spacing: 1px;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* 分类筛选按钮 */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 40px 0 50px;
+    padding: 20px;
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(200, 35, 51, 0.2);
+    border-color: transparent;
+}
+
+/* 寄语网格布局 */
+.message-section {
+    margin: 60px 0;
+}
+
+.message-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* 寄语卡片样式 */
+.message-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 队长卡片特殊样式 */
+.message-card.captain-card {
+    border-left: 4px solid #D4AF37;
+    background: linear-gradient(to bottom right, #ffffff, #fff9e6);
+}
+
+/* 头像和基本信息区域 */
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.message-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #f0f0f0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-info {
+    flex: 1;
+}
+
+.message-info h3 {
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.message-info .position {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+/* 队内职务标签容器 */
+.role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.role-tag {
+    background: rgba(179, 25, 66, 0.1);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(179, 25, 66, 0.2);
+}
+
+.role-tag.gold {
+    background: rgba(212, 175, 55, 0.15);
+    color: #B8860B;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* 寄语内容区域 */
+.message-content {
+    line-height: 1.8;
+    color: #444;
+    font-size: 1rem;
+    position: relative;
+    flex-grow: 1;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.message-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* 引用样式 */
+.message-quote {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    position: relative;
+    border-radius: 0 8px 8px 0;
+}
+
+.message-quote:before {
+    content: '"';
+    font-size: 50px;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    font-family: Georgia, serif;
+}
+
+/* 日期和操作区域 */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.message-date {
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.view-detail {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(179, 25, 66, 0.05);
+    border: 1px solid rgba(179, 25, 66, 0.1);
+}
+
+.view-detail:hover {
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+}
+
+/* 返回链接 */
+.back-link {
+    display: inline-block;
+    margin: 40px 0 60px;
+    padding: 14px 30px;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(200, 35, 51, 0.2);
+}
+
+.back-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200, 35, 51, 0.3);
+}
+
+/* 分页导航 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 40px;
+    gap: 10px;
+}
+
+.page-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: var(--dark-gray);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.page-btn:hover, .page-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(200, 35, 51, 0.2);
+}
+
+/* 模态框样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-title {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    line-height: 1.8;
+    color: #444;
+}
+
+.modal-footer {
+    text-align: right;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* 强调文本样式 */
+.highlight-text {
+    background: linear-gradient(to right, rgba(255, 245, 0, 0.2), rgba(255, 245, 0, 0.1));
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .message-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .detail-title {
+        font-size: 32px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .detail-title {
+        font-size: 28px;
+    }
+    
+    .detail-subtitle {
+        font-size: 18px;
+    }
+    
+    .message-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .message-card {
+        padding: 25px;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .message-avatar {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .role-tags {
+        justify-content: center;
+    }
+    
+    .filter-buttons {
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .view-detail {
+        align-self: stretch;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-title {
+        font-size: 24px;
+    }
+    
+    .detail-subtitle {
+        font-size: 16px;
+    }
+    
+    .message-grid {
+        gap: 20px;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+    }
+    
+    .filter-btn {
+        justify-content: center;
+    }
+}

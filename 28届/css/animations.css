@@ -1,0 +1,282 @@
+/* 动画样式 */
+
+/* 关键帧定义 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes growHeight {
+    from { height: 0; }
+    to { height: var(--target-height); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* 加载动画 */
+.loading-spinner {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.loading-spinner .spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(200, 35, 51, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* 页面进入动画 */
+.member-info-card {
+    animation: slideUp 0.8s ease-out;
+}
+
+.stat-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* 图表动画 */
+.chart-bar {
+    opacity: 0;
+    transform-origin: bottom;
+}
+
+.chart-bar.animated {
+    animation: growHeight 1s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.weekly-bar.animate-grow {
+    animation: growHeight 0.8s ease-out forwards;
+}
+
+/* 时间轴动画 */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-marker .marker-dot {
+    animation: pulse 2s infinite;
+}
+
+/* 卡片悬停效果 */
+.hover-effect {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 徽章动画 */
+.badge-item {
+    animation: slideInRight 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.badge-item:hover {
+    animation: pulse 0.5s ease;
+}
+
+/* 照片动画 */
+.photo-container {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.photo-container.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.photo-container.loaded {
+    animation: fadeIn 0.3s ease;
+}
+
+.photo-container.filter-match {
+    animation: pulse 0.3s ease;
+}
+
+.photo-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+/* 模态框动画 */
+.modal {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+/* 按钮动画 */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+.back-link.clicked {
+    animation: slideInLeft 0.3s ease reverse;
+}
+
+/* 数字增长动画 */
+.stat-value {
+    position: relative;
+}
+
+.stat-value::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    animation: growWidth 2s ease-out forwards;
+}
+
+@keyframes growWidth {
+    to { width: 100%; }
+}
+
+/* 状态动画 */
+.avatar-status.pulse-animation {
+    animation: pulse 1.5s infinite;
+}
+
+.status-active {
+    animation: pulse 2s infinite;
+}
+
+/* 滚动指示器 */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-indicator.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-indicator:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* 响应式动画调整 */
+@media (max-width: 768px) {
+    .timeline-item {
+        animation-duration: 0.4s !important;
+    }
+    
+    .photo-container {
+        animation-duration: 0.3s !important;
+    }
+}
